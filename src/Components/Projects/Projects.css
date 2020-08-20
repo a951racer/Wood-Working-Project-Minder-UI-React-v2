@@ -1,0 +1,51 @@
+/*
+.project-image {
+
+}
+*/
+
+.thumbnail {
+  height: 100px;
+  width: 100px;
+}
+
+.p-card-title {
+  color: #3e2312;
+}
+
+
+/* Project Details */
+
+.project-details-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.project-image {
+  margin-right: 25px;
+  margin-left: 25px;
+  width: 400px;
+}
+
+/*
+.project-data {
+  
+}
+*/
+
+.cover-image {
+  height: 350px;
+  width: 350px;
+}
+
+.data-item {
+  margin-bottom: 5px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.inplace {
+  display: inline;
+}

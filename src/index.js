@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App.js";
+import "regenerator-runtime/runtime"
+import "core-js/stable"
 
-//ReactDOM.render(<App />, document.getElementById("root"));
+import App from "./App.js";
+import './index.css';
 
 ReactDOM.render(
     <App />,

@@ -1,0 +1,33 @@
+.menu-button {
+  background: #3e2312;
+  color: white;
+  border: none;
+  margin-left: 13px;
+  margin-top: 2px;;
+}
+
+.menu-button:hover {
+  background: #8b5529;
+  cursor: pointer;
+  border: 1px;
+  border-style: solid;
+  border-color: #d9a460;
+}
+
+.menu-button:focus {
+  border: none;
+  outline: none;
+}
+
+body .p-menu .p-menu-list .p-menuitem:hover,
+body .p-menu .p-menuitem-link:hover, 
+body .p-menu .p-menuitem-link .p-menuitem-text:hover,
+body .p-menu .p-menuitem-link .p-menuitem-icon:hover {
+  background: #d9a460;
+  color: white;
+}
+
+body .p-menu .p-menuitem-link .p-menuitem-text,
+body .p-menu .p-menuitem-link .p-menuitem-icon {
+  color: #3e2312;
+}

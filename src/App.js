@@ -1,27 +1,35 @@
-import React, { Component} from "react";
+import React from "react";
+import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom"
 import { hot } from "react-hot-loader";
-import "./App.css";
 
 import './Components/app/Assets/wwpm-theme/theme.css'
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
-import Routes from './Components/app/routes'
+import Routes from './Components/app/Routes'
+import './App.css'
 
-import { BrowserRouter } from "react-router-dom";
-import TokenProvider from "./providers/token/provider";
-
+import TokenProvider from "./providers/token/provider"
+import AuthProvider from "./providers/auth/provider"
+import FetchProvider from "./providers/fetch/provider"
+import ProjectsProvider from "./providers/projects/provider"
 
 const App = () => {
+  //const { isLoggedIn } = useToken()
+  
   return (
-    <TokenProvider>
-      <BrowserRouter>
-        <>
-          <Routes />
-        </>    
-      </BrowserRouter>
-    </TokenProvider>
-    )
+    <BrowserRouter>
+      <TokenProvider>
+        <FetchProvider>
+          <AuthProvider>
+            <ProjectsProvider>
+                <Routes />
+            </ProjectsProvider>
+          </AuthProvider>
+        </FetchProvider>
+      </TokenProvider>
+    </BrowserRouter>
+  )
 }
 
 export default hot(module)(App)

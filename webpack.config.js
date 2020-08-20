@@ -28,6 +28,23 @@ module.exports = {
           'file-loader',
         ],
       },
+      {
+        test: /\.s[ac]ss$/i,
+        exclude: [
+          path.resolve("node_modules/primereact/resources/primereact.css"),
+          path.resolve(
+            "node_modules/primereact/resources/themes/nova-light/theme.css"
+          )
+        ],
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader"
+        ]
+      },
     ]
   },
   resolve: { extensions: ["*", ".js", ".jsx"] },
@@ -40,7 +57,8 @@ module.exports = {
     contentBase: path.join(__dirname, "public/"),
     port: 4000,
     publicPath: "http://localhost:4001/dist/",
-    hotOnly: true
+    hotOnly: true,
+    historyApiFallback: true
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
 };

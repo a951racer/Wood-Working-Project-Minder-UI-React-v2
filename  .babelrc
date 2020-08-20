@@ -1,9 +1,21 @@
 {
   "presets": [
-    "@babel/env",
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "corejs": {
+          "version": 3,
+          "proposals": true
+        }
+      }
+    ],
     "@babel/preset-react"
-  ]//,
-//  "plugins": [
-    //"react-hot-loader/babel"
-  //]
+  ],
+  "plugins": [
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ]
 }
