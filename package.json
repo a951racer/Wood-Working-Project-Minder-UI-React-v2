@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "webpack-dev-server --mode development",
-    "heroku-postbuild": "webpack -p"
+    "heroku-postbuild": "webpack -p",
+    "build": "webpack -p"
   },
   "author": "Jon M Hobbs",
   "license": "MIT",
@@ -40,6 +41,7 @@
     "core-js": "^3.6.5",
     "css-loader": "^4.2.1",
     "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
     "sass-loader": "^9.0.3",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.1",
