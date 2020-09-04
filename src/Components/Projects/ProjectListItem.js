@@ -29,7 +29,7 @@ const ProjectListItem = ({project}) => {
           subTitle={project.type + " - " +  project.subType}
         >
           <div className="project-image">
-            <img className="thumbnail" src={pic} alt="Planer Stand" ></img>
+            <img className="thumbnail" src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} alt='pic here'></img>
           </div>
           <div className="project-category">
             
