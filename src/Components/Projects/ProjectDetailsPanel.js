@@ -29,7 +29,7 @@ const ProjectDetails = ({project}) => {
       <Card footer={footer}>
         <div className="project-details-container">
           <div className="project-image">
-            <img className="cover-image" src={'https://wwpm-files.s3-us-west-2.amazonaws.com/cover-images/Stowable+Workbench.png'} alt="Planer Stand" onClick={(e) => op.toggle(e)} ></img>
+            <img className="cover-image" src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} alt="pic here" onClick={(e) => op.toggle(e)} ></img>
           </div>
 
           <div className="project-data">
@@ -67,7 +67,7 @@ const ProjectDetails = ({project}) => {
       </Card>
 
       <OverlayPanel ref={el => op = el} showCloseIcon={true}>
-        <img src="https://wwpm-files.s3-us-west-2.amazonaws.com/cover-images/Stowable+Workbench.png" alt={projectDetails.name} />
+        <img src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} alt={projectDetails.name} />
       </OverlayPanel>
     </>
   )
