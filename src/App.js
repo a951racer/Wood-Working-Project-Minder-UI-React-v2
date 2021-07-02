@@ -7,7 +7,7 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
 //import Routes from './Components/app/Routes'
-import Routes from '../src/Components/app/Routes.js'
+import Routes from '../src/Components/app/routes.js'
 import './App.css'
 
 import TokenProvider from "./providers/token/provider"

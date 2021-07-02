@@ -23,7 +23,7 @@ const AuthPage = () => {
     login(username, password)
   }
 
-  const footer = <span style={{textAlign: 'center'}}><h2><i>Woodworking Project Minder</i></h2></span>
+  const footer = <span style={{textAlign: 'center'}}><h2><i>WoodworkX</i></h2></span>
 
   return (
     <>
@@ -34,7 +34,7 @@ const AuthPage = () => {
               <div className="login-form-wrapper">
                 <div className="login-form-logo">
                   <Card footer={footer}>
-                    <img src={logo} alt="Woodworking Project Minder"/>
+                    <img src={logo} alt="WoodworkX"/>
                   </Card>
                 </div>
                 <div className="login-form">
