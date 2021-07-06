@@ -13,11 +13,7 @@ const TokenProvider = ({children}) => {
     return token
   }
 
-  function isLoggedIn() {
-    return !!token
-  }
-
-  function setToken(userToken) {
+  function setLocalToken(userToken) {
     localStorage.setItem('WWPM_AUTH_TOKEN', JSON.stringify(userToken))
   }
 
@@ -29,7 +25,7 @@ const TokenProvider = ({children}) => {
     <TokenContext.Provider value={{
       getToken,
       isLoggedIn,
-      setToken,
+      setLocalToken,
       deleteToken
     }}>
       {children}

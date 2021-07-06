@@ -8,10 +8,10 @@ import useToken from '../../providers/token/hook'
 import AuthContext from './context'
 
 const AuthProvider = ({children}) => {
-  const [userStatus, setUserStatus] = useState('logedOut')
+  const [userStatus, setUserStatus] = useState('loggedOut')
   const [userId, setUserId] = useState(null)
   const history = useHistory()
-  const { setToken, deleteToken } = useToken()
+  const { setLocalToken, deleteToken } = useToken()
   const { fetchViaApi } = useFetch()
 
   async function login(email, password) {
@@ -19,7 +19,7 @@ const AuthProvider = ({children}) => {
     let result = await fetchViaApi('POST', '/auth/login', {email, password})
     setUserStatus('loggedIn')
     setUserId(result.userId)
-    await setToken(result.token)
+    await setLocalToken(result.token)
     //setProfile????
     //setBusy('login', false)
     history.push('/')

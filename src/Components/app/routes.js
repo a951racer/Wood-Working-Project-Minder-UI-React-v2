@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import {Route, Switch, Redirect} from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
-import useToken from '../../providers/token/hook'
+import useAuth from '../../providers/auth/hook'
 
 import AuthPage from '../../Pages/Auth/AuthPage'
 import ProjectsPage from '../../Pages/Projects/ProjectsPage'
@@ -10,14 +10,14 @@ import ProjectDetailsPage from '../../Pages/Projects/ProjectDetails'
 
 
 export default function Routes () {
-  const { token, isLoggedIn } = useToken()
+  const { userStatus } = useAuth()
 
   return (
     <Switch>
-      {isLoggedIn() && <Redirect from="/auth" to="/projects" exact />}
-      {isLoggedIn() && <Redirect from="/" to="/projects" exact />}
-      {!isLoggedIn() && <Route path="/auth" component={AuthPage} />}
-      {!isLoggedIn() && <Redirect to="/auth" exact />}
+      {userStatus === 'loggedIn' && <Redirect from="/auth" to="/projects" exact />}
+      {userStatus === 'loggedIn' && <Redirect from="/" to="/projects" exact />}
+      {userStatus === 'loggedOut' && <Route path="/auth" component={AuthPage} />}
+      {userStatus === 'loggedOut' && <Redirect to="/auth" exact />}
       {<Route path="/projects" component={ProjectsPage} />}
       {<Route path="/project-details/:id" component={ProjectDetailsPage} />}
     </Switch>
