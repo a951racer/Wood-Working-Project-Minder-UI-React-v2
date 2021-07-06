@@ -17,7 +17,7 @@ const FetchProvider = ({settings, children}) => {
 
   let fetchViaApi = async (type, url, payload) => {
     const uri = apiRoot + url
-    const token = getToken()
+    const token = await getToken()
     const options = {
       headers: {
         'Authorization': 'Bearer ' + token

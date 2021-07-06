@@ -13,7 +13,7 @@ const PageLayout = ({title, children}) => {
             <MainNavigator />
           </div>
           <div className="brand">
-            Woodworking Project Minder
+            WoodworkX
           </div>
         </div>
         <div className="title">

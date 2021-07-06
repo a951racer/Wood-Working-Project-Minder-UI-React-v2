@@ -14,10 +14,10 @@ export default function Routes () {
 
   return (
     <Switch>
-      {userStatus === 'loggedIn' && <Redirect from="/auth" to="/projects" exact />}
-      {userStatus === 'loggedIn' && <Redirect from="/" to="/projects" exact />}
       {userStatus === 'loggedOut' && <Route path="/auth" component={AuthPage} />}
       {userStatus === 'loggedOut' && <Redirect to="/auth" exact />}
+      {userStatus === 'loggedIn' && <Redirect from="/" to="/projects" exact />}
+      {userStatus === 'loggedIn' && <Redirect from="/auth" to="/projects" exact />}
       {<Route path="/projects" component={ProjectsPage} />}
       {<Route path="/project-details/:id" component={ProjectDetailsPage} />}
     </Switch>

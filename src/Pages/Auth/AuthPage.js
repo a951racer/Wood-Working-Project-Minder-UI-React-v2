@@ -13,14 +13,13 @@ const AuthPage = () => {
   const [password, setPassword] = useState('')
   const { login } = useAuth()
 
-  function submitHandler (event) {
+  async function submitHandler (event) {
     event.preventDefault()
 
     if (username.trim().length === 0 || password.trim().length === 0) {
       return
     }
-    console.log("creds: ", username, password)
-    login(username, password)
+    await login(username, password)
   }
 
   const footer = <span style={{textAlign: 'center'}}><h2><i>WoodworkX</i></h2></span>

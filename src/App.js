@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
 import { hot } from "react-hot-loader";
 
 import './Components/app/Assets/wwpm-theme/theme.css'
@@ -16,7 +16,6 @@ import FetchProvider from "./providers/fetch/provider"
 import ProjectsProvider from "./providers/projects/provider"
 
 const App = () => {
-  //const { isLoggedIn } = useToken()
   
   return (
     <BrowserRouter>

@@ -18,7 +18,6 @@ const ProjectsProvider = ({children}) => {
 
   async function fetchProjectDetails(id) {
     //setBusy('projects', true)
-    console.log('fecth: ', id)
     let result = await fetchViaApi('GET', '/project/' + id)
     setCurrentProject(result)
     //setBusy('projects', false)
@@ -34,9 +33,7 @@ const ProjectsProvider = ({children}) => {
     //call to API
     //update state list of projects
     projects.push(newProject)
-    console.log('projects: ', projects)
     //setBusy('projects', false)
-    console.log('created: ', newProject)
   }
   
   return (

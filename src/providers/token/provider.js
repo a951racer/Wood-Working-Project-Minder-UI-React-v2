@@ -4,27 +4,25 @@ import TokenContext from './context'
 
 const TokenProvider = ({children}) => {
   
-  let token = null
-  if (localStorage.getItem('WWPM_AUTH_TOKEN') && localStorage.getItem('WWPM_AUTH_TOKEN') !== 'undefined') {
-    token = JSON.parse(localStorage.getItem('WWPM_AUTH_TOKEN'))
-  }
+  const [ token, setToken ] = useState(null)
 
   function getToken() {
     return token
   }
 
-  function setLocalToken(userToken) {
-    localStorage.setItem('WWPM_AUTH_TOKEN', JSON.stringify(userToken))
+  async function setLocalToken(userToken) {
+    await localStorage.setItem('WWPM_AUTH_TOKEN', userToken)
+    await setToken(userToken)
   }
 
-  function deleteToken() {
+  async function deleteToken() {
     localStorage.setItem('WWPM_AUTH_TOKEN', null)
+    await setToken(null)
   }
 
   return (
     <TokenContext.Provider value={{
       getToken,
-      isLoggedIn,
       setLocalToken,
       deleteToken
     }}>

@@ -17,12 +17,11 @@ const AuthProvider = ({children}) => {
   async function login(email, password) {
     //setBusy('login', true)
     let result = await fetchViaApi('POST', '/auth/login', {email, password})
-    setUserStatus('loggedIn')
-    setUserId(result.userId)
     await setLocalToken(result.token)
+    setUserId(result.userId)
+    setUserStatus('loggedIn')
     //setProfile????
     //setBusy('login', false)
-    history.push('/')
   }
 
   async function logout() {
