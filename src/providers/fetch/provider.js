@@ -1,19 +1,16 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import runtimeEnv from '@mars/heroku-js-runtime-env'
 
 import FetchContext from './context'
 import useToken from '../token/hook'
 
-const env = runtimeEnv()  /// not working!!!
 const apiRoot = 'https://wwpm-api-staging.herokuapp.com' //env.REACT_APP_API
 
 const FetchProvider = ({settings, children}) => {
   const [fetchResult, setFetchResult] = useState({statusCode: null, callIx: 0, message: null, error: null})
   const [error, setError] = useState()
   const { getToken } = useToken()
-  const env = runtimeEnv()
 
   let fetchViaApi = async (type, url, payload) => {
     const uri = apiRoot + url
