@@ -9,14 +9,12 @@ import NewProjectDialog from '../../Components/app/NewProjectDialog'
 
 const ProjectPage = () => {
   const [editingProject, setEditingProject] = useState()
-  const { projects, fetchProjects } = useProjects()
-  //busy
+  const { projects, fetchProjects, resetCurrentProject } = useProjects()
 
-    // on create
     useEffect(() => {
       fetchProjects()
+      resetCurrentProject()
       return () => {
-        //clear()
       }
     }, [])
   
