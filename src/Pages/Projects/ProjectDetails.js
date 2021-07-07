@@ -17,29 +17,28 @@ const ProjectDetailsPage = (props) => {
   }, [])
 
   return (
-    <PageLayout title={currentProject ? currentProject.name : "Loading..."}>
-      {currentProject &&
-        <div style={{width: '80vw', margin: 'auto'}}>
-          <ProjectDetails project={currentProject} />
-          <br />
-          <TabView>
-            <TabPanel header="Boards">
-              <Boards boards={currentProject.boards} />
-            </TabPanel>
-            <TabPanel header="Library">
-                Files Component
-            </TabPanel>
-            <TabPanel header="Reports">
-                Reports Component
-            </TabPanel>
-            <TabPanel header="Notes">
-                Notes Component
-            </TabPanel>
-          </TabView>
-        </div>
-      }
-
-    </PageLayout>
+      <PageLayout title={currentProject ? currentProject.name : 'Loading...'}>
+        {currentProject &&
+          <div style={{width: '80vw', margin: 'auto'}}>
+            <ProjectDetails project={currentProject} />
+            <br />
+            <TabView>
+              <TabPanel header="Boards">
+                <Boards boards={currentProject.boards} />
+              </TabPanel>
+              <TabPanel header="Library">
+                  Files Component
+              </TabPanel>
+              <TabPanel header="Reports">
+                  Reports Component
+              </TabPanel>
+              <TabPanel header="Notes">
+                  Notes Component
+              </TabPanel>
+            </TabView>
+          </div>
+        }
+      </PageLayout>
   )
 }
 

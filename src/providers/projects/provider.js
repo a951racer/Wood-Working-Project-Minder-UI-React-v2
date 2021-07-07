@@ -4,23 +4,23 @@ import ProjectsContext from './context'
 import useFetch from '../fetch/hook'
 
 const ProjectsProvider = ({children}) => {
-  const [projects, setProjects] = useState()
-  const [currentProject, setCurrentProject] = useState()
-  const [profile, setProfile] = useState()
+  const [projects, setProjects] = useState([])
+  const [currentProject, setCurrentProject] = useState(null)
+  const [profile, setProfile] = useState(null)
   const { fetchViaApi } = useFetch()
 
   async function fetchProjects() {
-    //setBusy('projects', true)
     let result = await fetchViaApi('GET', '/project')
     setProjects(result)
-    //setBusy('projects', false)
   }
 
   async function fetchProjectDetails(id) {
-    //setBusy('projects', true)
     let result = await fetchViaApi('GET', '/project/' + id)
     setCurrentProject(result)
-    //setBusy('projects', false)
+  }
+
+  async function resetCurrentProject() {
+    setCurrentProject(null)
   }
 
   async function saveProject(updatedProject) {
@@ -29,11 +29,9 @@ const ProjectsProvider = ({children}) => {
   }
 
   async function createProject(newProject) {
-    //setBusy('projects', true)
     //call to API
     //update state list of projects
     projects.push(newProject)
-    //setBusy('projects', false)
   }
   
   return (
@@ -42,6 +40,7 @@ const ProjectsProvider = ({children}) => {
       currentProject,
       fetchProjects,
       fetchProjectDetails,
+      resetCurrentProject,
       saveProject,
       createProject,
     }}>
