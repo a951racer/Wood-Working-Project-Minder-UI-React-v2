@@ -8,10 +8,22 @@ import './Projects.css'
 
 const ProjectDetails = ({project}) => {
   const [projectDetails, setProjectDetails] = useState(project)
+  const [projectSnapshot, setProjectSnapshot] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
   const { saveProject } = useProjects()
 
   let op = React.createRef()
+
+  const startEditing = () => {
+    setProjectSnapshot(projectDetails)
+    setIsEditing(true)
+  }
+
+  const cancelEditing = () => {
+    setIsEditing(false)
+    setProjectDetails(projectSnapshot)
+    setProjectSnapshot(null)
+  }
 
   const updateProperty = (property, value) => {
     const updatedProjectDetails = {...projectDetails, [property]: value}
@@ -19,7 +31,6 @@ const ProjectDetails = ({project}) => {
   }
 
   const saveProjectDetails = async () => {
-    console.log('saving: ', projectDetails)
     setIsEditing(false)
     await saveProject(projectDetails)
     //this.growl.show({severity: 'success', summary: 'Saved', detail: 'ProjectDetails has been updated'})
@@ -34,7 +45,7 @@ const ProjectDetails = ({project}) => {
           <>
             <Card footer={footer}>
               <div className='edit-buttons'>
-                <i className='pi pi-w pi-pencil' onClick={() => setIsEditing(true)} />
+                <i className='pi pi-w pi-pencil' onClick={() => startEditing()} />
               </div>
               <div className="project-details-container">
                 <div className="project-image">
@@ -84,7 +95,7 @@ const ProjectDetails = ({project}) => {
           <div className='edit-buttons'>
             <i className='pi pi-w pi-check' onClick={() => saveProjectDetails()} />
             &nbsp; &nbsp;
-            <i className='pi pi-w pi-times' onClick={() => setIsEditing(false)} />
+            <i className='pi pi-w pi-times' onClick={() => cancelEditing()} />
           </div>
           <div className="project-details-container">
             <div className="project-image">
