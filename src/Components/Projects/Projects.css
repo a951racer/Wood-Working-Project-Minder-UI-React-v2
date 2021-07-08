@@ -1,9 +1,3 @@
-/*
-.project-image {
-
-}
-*/
-
 .thumbnail {
   height: 100px;
   width: 100px;
@@ -48,4 +42,8 @@
 
 .inplace {
   display: inline;
+}
+
+.edit-buttons {
+  text-align: right;
 }
