@@ -24,7 +24,7 @@ const ProjectsProvider = ({children}) => {
   }
 
   async function saveProject(updatedProject) {
-    //write to API
+    const result = await fetchViaApi('PUT', `/project/${updatedProject._id}`, updatedProject)
     //update state projects
   }
 
