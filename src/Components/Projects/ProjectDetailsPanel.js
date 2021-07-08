@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { InputText } from 'primereact/inputtext'
 import { Card } from 'primereact/card'
 import { OverlayPanel } from 'primereact/overlaypanel'
+import { Chips } from 'primereact/chips';
+import Chip from '../app/Chip/Chip'
 
 import useProjects from '../../providers/projects/hook'
 import './Projects.css'
@@ -58,13 +60,12 @@ const ProjectDetails = ({project}) => {
                   </div>
 
                   <div className="data-item">
-                    <span className='label'>Type:</span>
-                    <span> {projectDetails.type}</span>
-                  </div>
-
-                  <div className="data-item">
-                    <span className='label'>Sub Type:</span>
-                    <span> {projectDetails.subType}</span>
+                    <span className='label'>Tags:</span>
+                      {
+                        projectDetails.tags.map((tag, index) => (
+                            <Chip key={index} label={tag} />
+                        ))
+                      }
                   </div>
 
                   <div className="data-item">
@@ -108,13 +109,8 @@ const ProjectDetails = ({project}) => {
               </div>
 
               <div className="data-item">
-                <span className='label'>Type: </span>
-                <InputText value={projectDetails.type} onChange={(e) => updateProperty('type', e.target.value)} />
-              </div>
-
-              <div className="data-item">
-                <span className='label'>Sub Type:</span>
-                <InputText value={projectDetails.subType} onChange={(e) => updateProperty('subType', e.target.value)} />
+                <span className='label'>Tags: </span>
+                <Chips value={projectDetails.tags} onChange={(e) => updateProperty('tags', e.target.value) } />
               </div>
 
               <div className="data-item">
