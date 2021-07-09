@@ -66,8 +66,7 @@ const ProjectList = ({projects}) => {
             <div className="product-description">{project.description}</div>
             <img className='p-shadow-7' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here'></img>
             </div>
-            <div>
-              <i className="pi pi-tag product-category-icon"></i>
+            <div className='tags-grid'>
               <span>
                 {
                   project.tags.map((tag, index) => (
