@@ -47,3 +47,9 @@
 .edit-buttons {
   text-align: right;
 }
+
+/* Project List Item */
+.tags {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}

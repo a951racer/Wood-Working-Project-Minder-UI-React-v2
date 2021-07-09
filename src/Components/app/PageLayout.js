@@ -23,7 +23,7 @@ const PageLayout = ({title, children}) => {
           {children}
         </div>
         <div className="footer">
-          A HobbsSquad Joint &copy; 2020
+          A HobbsSquad Joint &copy; 2021
         </div>
       </div>
     </div>
