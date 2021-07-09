@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
+import { Rating } from 'primereact/rating'
+import { ScrollPanel } from 'primereact/scrollpanel';
+
 import 'primeflex/primeflex.css';
 
 import Chip from '../app/Chip/Chip'
@@ -12,6 +15,29 @@ const ProjectList = ({projects}) => {
   const [sortOrder, setSortOrder] = useState(null);
   const [sortField, setSortField] = useState(null);
   
+  const renderListItem = (project) => {
+    return (
+        <div className="p-col-12">
+            <div className="product-list-item">
+                <img className='p-shadow-7' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here'></img>
+                <div className="product-list-detail">
+                    <div className="product-name">{project.name}</div>
+                    <div className="product-description">{project.description}</div>
+                    <Rating value={project.rating} readOnly cancel={false}></Rating>
+                    <i className="pi pi-tag product-category-icon"></i>
+                    <span>
+                      {
+                        project.tags.map((tag, index) => (
+                            <Chip key={index} label={tag} />
+                        ))
+                      }
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
+  }
+
   const renderGridItem = (project) => {
     return (
       <div className="p-col-12 p-md-3">
@@ -23,7 +49,8 @@ const ProjectList = ({projects}) => {
             </div>
             <div>
               <i className="pi pi-tag product-category-icon"></i>
-              <span>                      {
+              <span>
+                {
                   project.tags.map((tag, index) => (
                       <Chip key={index} label={tag} />
                   ))
@@ -47,19 +74,21 @@ const ProjectList = ({projects}) => {
 }
 
   return (
-    <div className="dataview-demo">
-      <div className="card">
-          <DataView
-            value={projects}
-            layout={layout}
-            itemTemplate={itemTemplate}
-            paginator rows={9}
-            emptyMessage='No Records Found'
-            //sortOrder={sortOrder}
-            //sortField={sortField}
-          />
+    <ScrollPanel >
+      <div className="dataview-demo">
+        <div className="card">
+            <DataView
+              value={projects}
+              layout='list'
+              itemTemplate={itemTemplate}
+              paginator rows={9}
+              emptyMessage='No Records Found'
+              //sortOrder={sortOrder}
+              //sortField={sortField}
+            />
+        </div>
       </div>
-    </div>
+    </ScrollPanel>
 )
 }
 
