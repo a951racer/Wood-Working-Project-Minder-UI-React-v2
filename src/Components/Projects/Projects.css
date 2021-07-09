@@ -95,7 +95,7 @@
 }
 
 .dataview-demo .product-list-item img {
-  width: 150px;
+  width: 100px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   margin-right: 2rem;
 }
@@ -183,4 +183,9 @@
       align-items: center;
       width: 100%;
   }
+}
+
+.p-grid > div {
+  border: solid #e9ecef;
+  border-width: 0 0 2px 0;
 }

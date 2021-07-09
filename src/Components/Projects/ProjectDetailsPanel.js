@@ -51,7 +51,13 @@ const ProjectDetails = ({project}) => {
               </div>
               <div className="project-details-container">
                 <div className="project-image">
-                  <img className="cover-image" src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + projectDetails._id + '.png'} alt="pic here" onClick={(e) => op.toggle(e)} ></img>
+                  <img 
+                    className="cover-image"
+                    src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + projectDetails._id + '.png'}
+                    onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
+                    alt="pic here"
+                    onClick={(e) => op.toggle(e)}
+                  />
                 </div>
                 <div className="project-data">
                   <div className="data-item">
@@ -87,7 +93,11 @@ const ProjectDetails = ({project}) => {
             </Card>
 
             <OverlayPanel ref={el => op = el} showCloseIcon={true}>
-              <img src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} alt={projectDetails.name} />
+              <img
+                src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'}
+                onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
+                alt={projectDetails.name}
+              />
             </OverlayPanel>
           </>
       :
@@ -100,7 +110,7 @@ const ProjectDetails = ({project}) => {
           </div>
           <div className="project-details-container">
             <div className="project-image">
-              <img className="cover-image" src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} alt="pic here" onClick={(e) => op.toggle(e)} ></img>
+              <img className="cover-image" src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'}  onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt="pic here" onClick={(e) => op.toggle(e)} ></img>
             </div>
             <div className="project-data">
               <div className="data-item">
@@ -132,7 +142,10 @@ const ProjectDetails = ({project}) => {
         </Card>
 
         <OverlayPanel ref={el => op = el} showCloseIcon={true}>
-          <img src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} alt={projectDetails.name} />
+          <img
+            src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} alt={projectDetails.name}
+            onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
+          />
         </OverlayPanel>
       </>
       }
