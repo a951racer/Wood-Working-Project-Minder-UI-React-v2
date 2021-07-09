@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import { Dialog } from 'primereact/dialog'
+import { Chips } from 'primereact/chips'
 
 import useProjects from '../../providers/projects/hook'
 
 const NewProjectDialog = () => {
   const projectDefault = {
     name: '',
-    type: '',
-    subType: '',
+    tags: [],
     description: ''
   }
   const [showDialog, setShowDialog] = useState(false)
@@ -22,7 +22,7 @@ const NewProjectDialog = () => {
   }
 
   const cancel = () => {
-    setProject({})
+    setProject(projectDefault)
     setShowDialog(false)
   }
 
@@ -55,14 +55,9 @@ const NewProjectDialog = () => {
             <InputText id="name" onChange={(e) => {updateProperty('name', e.target.value)}} value={project.name}/>
           </div>
 
-          <div className="p-col-4 "><label htmlFor="type">Type</label></div>
+          <div className="p-col-4 "><label htmlFor="type">Tags</label></div>
           <div className="p-col-8">
-            <InputText id="type" onChange={(e) => {updateProperty('type', e.target.value)}} value={project.type}/>
-          </div>
-
-          <div className="p-col-4 "><label htmlFor="subType">Sub-Type</label></div>
-          <div className="p-col-8">
-            <InputText id="subType" onChange={(e) => {updateProperty('subType', e.target.value)}} value={project.subType}/>
+            <Chips id="tags" onChange={(e) => {updateProperty('tags', e.target.value)}} value={project.tags}/>
           </div>
 
           <div className="p-col-4 "><label htmlFor="description">Description</label></div>

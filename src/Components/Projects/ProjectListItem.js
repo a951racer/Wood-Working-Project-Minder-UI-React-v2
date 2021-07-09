@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Redirect } from 'react-router-dom'
 import { Card } from 'primereact/card';
 
+import Chip from '../app/Chip/Chip'
 import './Projects.css'
 
 import pic from '../../Components/app/Assets/planer_stand.png'
@@ -26,8 +27,14 @@ const ProjectListItem = ({project}) => {
         <Card
           id={project._id}
           title={project.name}
-          subTitle={project.type + " - " +  project.subType}
         >
+          <div className='tags'>
+            {
+              project.tags.map((tag, index) => (
+                  <Chip key={index} label={tag} />
+              ))
+            }
+          </div>
           <div className="project-image">
             <img className="thumbnail" src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} alt='pic here'></img>
           </div>

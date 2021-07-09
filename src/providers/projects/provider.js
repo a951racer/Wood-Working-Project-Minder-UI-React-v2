@@ -29,9 +29,9 @@ const ProjectsProvider = ({children}) => {
   }
 
   async function createProject(newProject) {
-    //call to API
+    const result = await fetchViaApi('POST', '/project', newProject)
     //update state list of projects
-    projects.push(newProject)
+    setProjects([...projects, newProject])
   }
   
   return (
