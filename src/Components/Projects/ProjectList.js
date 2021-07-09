@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import 'primeflex/primeflex.css';
 
+import Chip from '../app/Chip/Chip'
+
 import ProjectListItem from './ProjectListItem'
 
 const ProjectList = ({projects}) => {
@@ -14,16 +16,19 @@ const ProjectList = ({projects}) => {
     return (
       <div className="p-col-12 p-md-3">
         <div className="product-grid-item card">
-            <div className="product-grid-item-top">
-                <div>
-                    <i className="pi pi-tag product-category-icon"></i>
-                    <span className="product-category">{project.tags[0]}</span>
-                </div>
+        <div className="product-grid-item-content">
+            <div className="product-name">{project.name}</div>
+            <div className="product-description">{project.description}</div>
+            <img src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} alt='pic here'></img>
             </div>
-            <div className="product-grid-item-content">
-              <img src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} alt='pic here'></img>
-              <div className="product-name">{project.name}</div>
-              <div className="product-description">{project.description}</div>
+            <div>
+              <i className="pi pi-tag product-category-icon"></i>
+              <span>                      {
+                  project.tags.map((tag, index) => (
+                      <Chip key={index} label={tag} />
+                  ))
+                }
+              </span>
             </div>
         </div>
     </div>
