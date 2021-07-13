@@ -12,13 +12,22 @@ import ProjectListItem from './ProjectListItem'
 
 const ProjectList = ({projects}) => {
   const [layout, setLayout] = useState('list')
+  const [rows, setRows] = useState(8)
   const [sortKey, setSortKey] = useState(null)
   const [sortOrder, setSortOrder] = useState(null)
   const [sortField, setSortField] = useState(null)
   const [redirect, setRedirect] = useState(false)
   const [redirectTo, setRedirectTo] = useState('')
 
-  
+  const changeLayout = (layout) => {
+    if (layout === 'list') {
+      setRows(8)
+    } else {
+      setRows(8)
+    }
+    setLayout(layout)
+  }
+
   const renderHeader = () => {
     return (
         <div className="p-grid p-nogutter">
@@ -26,7 +35,7 @@ const ProjectList = ({projects}) => {
                 Sorting Placeholder
             </div>
             <div className="p-col-6" style={{textAlign: 'right'}}>
-                <DataViewLayoutOptions layout={layout} onChange={(e) => setLayout(e.value)} />
+                <DataViewLayoutOptions layout={layout} onChange={(e) => changeLayout(e.value)} />
             </div>
         </div>
     );
@@ -95,7 +104,6 @@ const ProjectList = ({projects}) => {
   const header = renderHeader();
   
   function clickHandler (id) {
-    console.log('click')
     setRedirect(true)
     setRedirectTo('/project-details/' + id)
   }
@@ -114,7 +122,7 @@ const ProjectList = ({projects}) => {
                 layout={layout}
                 header={header}
                 itemTemplate={itemTemplate}
-                paginator rows={8}
+                paginator rows={rows}
                 emptyMessage='No Records Found'
                 //sortOrder={sortOrder}
                 //sortField={sortField}
