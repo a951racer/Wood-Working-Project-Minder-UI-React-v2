@@ -2,17 +2,21 @@ import React, { useState } from 'react'
 import { InputText } from 'primereact/inputtext'
 import { Card } from 'primereact/card'
 import { OverlayPanel } from 'primereact/overlaypanel'
-import { Chips } from 'primereact/chips';
+import { Chips } from 'primereact/chips'
 import Chip from '../app/Chip/Chip'
+import FileUploadDialog from '../app/dialogs/FileUploadDialog'
 
 import useProjects from '../../providers/projects/hook'
+import useFiles from '../../providers/files/hook'
 import './Projects.css'
 
 const ProjectDetails = ({project}) => {
   const [projectDetails, setProjectDetails] = useState(project)
   const [projectSnapshot, setProjectSnapshot] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
-  const { saveProject } = useProjects()
+  const [imagePath, setImagePath] = useState('https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + projectDetails._id + '.png')
+  const { fetchProjectDetails, saveProject } = useProjects()
+  const { uploadFile } = useFiles()
 
   let op = React.createRef()
 
@@ -38,6 +42,12 @@ const ProjectDetails = ({project}) => {
     //this.growl.show({severity: 'success', summary: 'Saved', detail: 'ProjectDetails has been updated'})
   }
 
+  const uploadThumbnail = async (file) => {
+    file.append('mediaType','thumbnail')
+    file.append('projectId', projectDetails._id)
+    await uploadFile(file)
+  }
+
   const footer = 
     <div style={{marginBottom: '.5em', width: '100px', margin: 'auto'}} ></div>
 
@@ -51,13 +61,16 @@ const ProjectDetails = ({project}) => {
               </div>
               <div className="project-details-container">
                 <div className="project-image">
-                  <img 
-                    className="cover-image"
-                    src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + projectDetails._id + '.png'}
-                    onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
-                    alt="pic here"
-                    onClick={(e) => op.toggle(e)}
-                  />
+                  <div className='image-card p-shadow-7'>
+                    <img 
+                      className="cover-image"
+                      src={imagePath}
+                      onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
+                      alt="pic here"
+                      onClick={(e) => op.toggle(e)}
+                    />
+                  </div>
+                  <FileUploadDialog label='Thumbnail' upload={uploadThumbnail}/>
                 </div>
                 <div className="project-data">
                   <div className="data-item">
@@ -110,7 +123,12 @@ const ProjectDetails = ({project}) => {
           </div>
           <div className="project-details-container">
             <div className="project-image">
-              <img className="cover-image" src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'}  onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt="pic here" onClick={(e) => op.toggle(e)} ></img>
+              <img className="cover-image"
+                src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'}
+                onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
+                alt="pic here"
+                onClick={(e) => op.toggle(e)}
+              ></img>
             </div>
             <div className="project-data">
               <div className="data-item">
