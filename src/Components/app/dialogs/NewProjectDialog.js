@@ -4,7 +4,7 @@ import { InputText } from 'primereact/inputtext'
 import { Dialog } from 'primereact/dialog'
 import { Chips } from 'primereact/chips'
 
-import useProjects from '../../providers/projects/hook'
+import useProjects from '../../../providers/projects/hook'
 
 const NewProjectDialog = () => {
   const projectDefault = {
@@ -45,7 +45,7 @@ const NewProjectDialog = () => {
 
   return (
     <>
-      <Button type="button" label="New" icon="pi pi-fw pi-plus" style={{marginBottom: '.5em'}} onClick={() => setShowDialog(true)} ></Button>
+      <Button className='p-shadow-3' type="button" label="New" icon="pi pi-fw pi-plus" style={{marginBottom: '.5em'}} onClick={() => setShowDialog(true)} ></Button>
 
       <Dialog visible={showDialog} style={{width:'25vw'}} header={'New Project'} modal={true} footer={dialogFooter} onHide={cancel}>
         {

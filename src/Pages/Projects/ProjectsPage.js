@@ -5,7 +5,7 @@ import useProjects from '../../providers/projects/hook'
 
 import PageLayout from '../../Components/app/PageLayout'
 import ProjectList from '../../Components/Projects/ProjectList'
-import NewProjectDialog from '../../Components/app/NewProjectDialog'
+import NewProjectDialog from '../../Components/app/dialogs/NewProjectDialog'
 
 const ProjectPage = () => {
   const [editingProject, setEditingProject] = useState()
