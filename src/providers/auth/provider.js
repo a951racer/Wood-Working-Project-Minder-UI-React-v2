@@ -10,6 +10,7 @@ import AuthContext from './context'
 const AuthProvider = ({children}) => {
   const [userStatus, setUserStatus] = useState('loggedOut')
   const [userId, setUserId] = useState(null)
+  const [profile, setProfile] = useState(null)
   const history = useHistory()
   const { setLocalToken, deleteToken } = useToken()
   const { fetchViaApi } = useFetch()
@@ -18,7 +19,8 @@ const AuthProvider = ({children}) => {
     //setBusy('login', true)
     let result = await fetchViaApi('POST', '/auth/login', {email, password})
     await setLocalToken(result.token)
-    setUserId(result.userId)
+    setProfile(result)
+    setUserId(result._id)
     setUserStatus('loggedIn')
     //setProfile????
     //setBusy('login', false)
@@ -35,6 +37,7 @@ const AuthProvider = ({children}) => {
     <AuthContext.Provider value={{
       userStatus,
       userId,
+      profile,
       login,
       logout,
     }}>

@@ -15,6 +15,7 @@ import AuthProvider from "./providers/auth/provider"
 import FetchProvider from "./providers/fetch/provider"
 import ProjectsProvider from "./providers/projects/provider"
 import FilesProvider from "./providers/files/provider";
+import ProfileProvider from "./providers/profile/provider";
 
 const App = () => {
   
@@ -24,9 +25,11 @@ const App = () => {
         <FetchProvider>
           <AuthProvider>
             <FilesProvider>
-              <ProjectsProvider>
-                <Routes />
-              </ProjectsProvider>
+              <ProfileProvider>
+                <ProjectsProvider>
+                  <Routes />
+                </ProjectsProvider>
+              </ProfileProvider>
             </FilesProvider>
           </AuthProvider>
         </FetchProvider>
