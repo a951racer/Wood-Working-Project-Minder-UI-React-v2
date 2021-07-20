@@ -6,8 +6,7 @@ import useAuth from '../../providers/auth/hook'
 import AuthPage from '../../Pages/Auth/AuthPage'
 import ProjectsPage from '../../Pages/Projects/ProjectsPage'
 import ProjectDetailsPage from '../../Pages/Projects/ProjectDetails'
-//import ProfilePage from '../../Pages/Profile'
-
+import ProfilePage from '../../Pages/Profile/ProfilePage'
 
 export default function Routes () {
   const { userStatus } = useAuth()
@@ -20,6 +19,7 @@ export default function Routes () {
       {userStatus === 'loggedIn' && <Redirect from="/auth" to="/projects" exact />}
       {<Route path="/projects" component={ProjectsPage} />}
       {<Route path="/project-details/:id" component={ProjectDetailsPage} />}
+      {<Route path="/profile" component={ProfilePage} />}
     </Switch>
   )
 }

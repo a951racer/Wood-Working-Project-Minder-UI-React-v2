@@ -5,8 +5,6 @@ import { Card } from 'primereact/card';
 import Chip from '../app/Chip/Chip'
 import './Projects.css'
 
-import pic from '../../Components/app/Assets/planer_stand.png'
-
 const ProjectListItem = ({project}) => {
   const [redirect, setRedirect] = useState(false)
   const [redirectTo, setRedirectTo] = useState('')
