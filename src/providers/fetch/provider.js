@@ -1,12 +1,11 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import env from "react-dotenv";
 
 import FetchContext from './context'
 import useToken from '../token/hook'
 
-const apiRoot = env.API_URL
+const apiRoot = process.env.API_URL
 
 const FetchProvider = ({settings, children}) => {
   const [fetchResult, setFetchResult] = useState({statusCode: null, callIx: 0, message: null, error: null})
