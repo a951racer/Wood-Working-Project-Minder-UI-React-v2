@@ -5,7 +5,7 @@ import axios from 'axios'
 import FetchContext from './context'
 import useToken from '../token/hook'
 
-const apiRoot = 'https://wwpm-api-staging.herokuapp.com' //env.REACT_APP_API
+const apiRoot = process.env.API_URL
 
 const FetchProvider = ({settings, children}) => {
   const [fetchResult, setFetchResult] = useState({statusCode: null, callIx: 0, message: null, error: null})

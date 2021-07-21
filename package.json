@@ -1,5 +1,5 @@
 {
-  "name": "wood-working-project-minder",
+  "name": "woodworkx-ui",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -39,6 +39,7 @@
     "babel-loader": "^8.1.0",
     "core-js": "^3.6.5",
     "css-loader": "^4.2.1",
+    "dotenv-webpack": "^7.0.3",
     "file-loader": "^6.0.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^4.5.2",
