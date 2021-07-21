@@ -67,6 +67,8 @@ module.exports = {
           template: "./src/index.html",
           filename: "./index.html"
     }),
-    new Dotenv()
+    new Dotenv({
+      systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
+    })
   ]
 };
