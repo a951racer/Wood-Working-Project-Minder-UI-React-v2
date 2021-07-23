@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Accordion, AccordionTab } from 'primereact/accordion'
+import { Button } from 'primereact/button'
 
 import BoardTable from './BoardTable'
 import FileUploadDialog from '../app/dialogs/FileUploadDialog'
@@ -7,7 +8,7 @@ import useProjects from '../../providers/projects/hook'
 import useFetch from '../../providers/fetch/hook'
 
 const Boards = ({boards}) => {
-  const { currentProject } = useProjects()
+  const { currentProject, importBoards } = useProjects()
   const { fetchViaApi } = useFetch()
 
 
@@ -17,7 +18,12 @@ const Boards = ({boards}) => {
   const dimensionalBoards = boards ? boards.filter((board) => board.material === 'Dimensional') : null
   return (
       <>
-        <FileUploadDialog label='CSV' mediaType='boards' projectId={currentProject._id}/>
+        <div>
+          <FileUploadDialog label='CSV' mediaType='boards' projectId={currentProject._id}/>
+          <span className='button-box'>
+            <Button className='p-shadow-3' type="button" label="Re-Import" icon="pi pi-fw pi-plus" style={{marginBottom: '.5em'}} onClick={() => importBoards()} ></Button>
+          </span>
+        </div>
         <Accordion multiple={true}>
           <AccordionTab header="Sheet Goods" disabled={!sheetBoards.length}>
             <BoardTable boards={sheetBoards} />

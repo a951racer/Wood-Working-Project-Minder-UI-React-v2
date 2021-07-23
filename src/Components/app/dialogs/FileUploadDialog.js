@@ -45,10 +45,9 @@ const FileUploadDialog = (props) => {
 
   return (
     <>
-      <div style={{textAlign: 'center'}} >
+      <span className='button-box'>
         <Button className='p-shadow-3' type="button" label={'Upload ' + label} icon="pi pi-fw pi-plus" style={{marginBottom: '.5em'}} onClick={() => setShowDialog(true)} ></Button>
-      </div>
-
+      </span>
       <Dialog visible={showDialog} style={{width:'25vw'}} header={'New ' + label} modal={true} /*footer={dialogFooter}*/ onHide={cancel}>
         {
           <div className="p-grid p-fluid">

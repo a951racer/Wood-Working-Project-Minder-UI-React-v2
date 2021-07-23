@@ -116,3 +116,7 @@ body .p-button hover {
 body .p-card {
   color: #3e2312;
 }
+
+.button-box {
+  margin: 5px;
+}
