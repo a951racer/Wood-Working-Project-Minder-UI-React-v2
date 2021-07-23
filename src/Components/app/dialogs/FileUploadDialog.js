@@ -10,17 +10,13 @@ const FileUploadDialog = (props) => {
 
   const [showDialog, setShowDialog] = useState(false)
   const [file, setFile] = useState(null)
-  const { label, upload } = props
+  const { uploadFile } = useFiles()
+  const { label, mediaType, projectId } = props
 
   const handleSelectedFile = (e) => {
     e.preventDefault();
     setFile(e.target.files[0])
   };
-
-  const updateProperty = (property, value) => {
-    const updatedProject = {...project, [property]: value}
-    setProject(updatedProject)
-  }
 
   const cancel = () => {
     setFile(null)
@@ -31,7 +27,9 @@ const FileUploadDialog = (props) => {
     event.preventDefault();
     const data = new FormData(event.target)
     data.append('file', file, label)
-    upload(data)
+    data.append('mediaType',mediaType)
+    data.append('projectId', projectId)
+    await uploadFile(data)
     setFile(null)
     setShowDialog(false)
   }
