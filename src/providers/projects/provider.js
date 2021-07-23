@@ -33,7 +33,12 @@ const ProjectsProvider = ({children}) => {
     //update state list of projects
     setProjects([...projects, newProject])
   }
-  
+
+  async function importBoards() {
+    const result = await fetchViaApi('POST', `/project/import-boards/${currentProject._id}`)
+    setCurrentProject(result)
+  }
+
   return (
     <ProjectsContext.Provider value={{
       projects,
@@ -43,6 +48,7 @@ const ProjectsProvider = ({children}) => {
       resetCurrentProject,
       saveProject,
       createProject,
+      importBoards,
     }}>
       {children}
     </ProjectsContext.Provider>

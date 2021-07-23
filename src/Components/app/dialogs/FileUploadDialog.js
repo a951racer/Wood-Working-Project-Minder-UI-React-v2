@@ -10,17 +10,13 @@ const FileUploadDialog = (props) => {
 
   const [showDialog, setShowDialog] = useState(false)
   const [file, setFile] = useState(null)
-  const { label, upload } = props
+  const { uploadFile } = useFiles()
+  const { label, mediaType, projectId } = props
 
   const handleSelectedFile = (e) => {
     e.preventDefault();
     setFile(e.target.files[0])
   };
-
-  const updateProperty = (property, value) => {
-    const updatedProject = {...project, [property]: value}
-    setProject(updatedProject)
-  }
 
   const cancel = () => {
     setFile(null)
@@ -31,7 +27,9 @@ const FileUploadDialog = (props) => {
     event.preventDefault();
     const data = new FormData(event.target)
     data.append('file', file, label)
-    upload(data)
+    data.append('mediaType',mediaType)
+    data.append('projectId', projectId)
+    await uploadFile(data)
     setFile(null)
     setShowDialog(false)
   }
@@ -47,10 +45,9 @@ const FileUploadDialog = (props) => {
 
   return (
     <>
-      <div style={{textAlign: 'center'}} >
+      <span className='button-box'>
         <Button className='p-shadow-3' type="button" label={'Upload ' + label} icon="pi pi-fw pi-plus" style={{marginBottom: '.5em'}} onClick={() => setShowDialog(true)} ></Button>
-      </div>
-
+      </span>
       <Dialog visible={showDialog} style={{width:'25vw'}} header={'New ' + label} modal={true} /*footer={dialogFooter}*/ onHide={cancel}>
         {
           <div className="p-grid p-fluid">

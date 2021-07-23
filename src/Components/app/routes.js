@@ -5,7 +5,7 @@ import useAuth from '../../providers/auth/hook'
 
 import AuthPage from '../../Pages/Auth/AuthPage'
 import ProjectsPage from '../../Pages/Projects/ProjectsPage'
-import ProjectDetailsPage from '../../Pages/Projects/ProjectDetails'
+import ProjectDetailsPage from '../../Pages/Projects/ProjectDetailsPage'
 import ProfilePage from '../../Pages/Profile/ProfilePage'
 
 export default function Routes () {

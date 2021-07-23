@@ -45,7 +45,7 @@ const ProjectList = ({projects}) => {
     return (
         <div className="p-col-12">
             <div className="product-list-item" onClick={() => clickHandler(project._id)}>
-                <img className='p-shadow-7' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here'></img>
+                <img className='p-shadow-7' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/' + project._id + '/Thumbnail.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here'></img>
                 <div className="product-list-detail">
                   <div className="product-name">{project.name}</div>
                   <div className="product-description">{project.description}</div>

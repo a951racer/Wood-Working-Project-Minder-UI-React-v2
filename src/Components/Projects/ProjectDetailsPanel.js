@@ -14,7 +14,7 @@ const ProjectDetails = ({project}) => {
   const [projectDetails, setProjectDetails] = useState(project)
   const [projectSnapshot, setProjectSnapshot] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
-  const [imagePath, setImagePath] = useState('https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + projectDetails._id + '.png')
+  const [imagePath, setImagePath] = useState('https://wwpm-files.s3-us-west-2.amazonaws.com/' + project._id + '/Thumbnail.png')
   const { fetchProjectDetails, saveProject } = useProjects()
   const { uploadFile } = useFiles()
 
@@ -42,12 +42,6 @@ const ProjectDetails = ({project}) => {
     //this.growl.show({severity: 'success', summary: 'Saved', detail: 'ProjectDetails has been updated'})
   }
 
-  const uploadThumbnail = async (file) => {
-    file.append('mediaType','thumbnail')
-    file.append('projectId', projectDetails._id)
-    await uploadFile(file)
-  }
-
   const footer = 
     <div style={{marginBottom: '.5em', width: '100px', margin: 'auto'}} ></div>
 
@@ -70,7 +64,7 @@ const ProjectDetails = ({project}) => {
                       onClick={(e) => op.toggle(e)}
                     />
                   </div>
-                  <FileUploadDialog label='Thumbnail' upload={uploadThumbnail}/>
+                  <FileUploadDialog label='Thumbnail' mediaType='thumbnail' projectId={projectDetails._id}/>
                 </div>
                 <div className="project-data">
                   <div className="data-item">

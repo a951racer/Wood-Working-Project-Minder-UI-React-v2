@@ -74,6 +74,10 @@ const ProfilePanel = ({profile}) => {
                     <span className='label'>Rough Width:</span>
                     <span> {currentProfile.roughWidth}</span>
                   </div>
+                  <div className="data-item">
+                    <span className='label'>Rough Thickness:</span>
+                    <span> {currentProfile.roughThickness}</span>
+                  </div>
                 </div>
               </div>
             </Card>
@@ -116,6 +120,11 @@ const ProfilePanel = ({profile}) => {
               <div className="data-item">
                 <span className='label'>Rough Width:</span>
                 <InputText value={currentProfile.roughWidth} onChange={(e) => updateProperty('roughWidth', e.target.value)} />
+              </div>
+
+              <div className="data-item">
+                <span className='label'>Rough Thickness:</span>
+                <InputText value={currentProfile.roughThickness} onChange={(e) => updateProperty('roughThickness', e.target.value)} />
               </div>
 
             </div>
