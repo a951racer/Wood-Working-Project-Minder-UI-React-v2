@@ -19,6 +19,11 @@ const MainNavigator = () => {
       command: () => handleClick(true, '/projects')
     },
     {
+      label:'Library',
+      icon: 'pi pi-fw pi-user-edit',
+      command: () => handleClick(true, '/library')
+    },
+    {
       label:'Profile',
       icon: 'pi pi-fw pi-user-edit',
       command: () => handleClick(true, '/profile')
