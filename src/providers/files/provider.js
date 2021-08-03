@@ -16,6 +16,7 @@ const FilesProvider = ({children}) => {
 
   async function uploadFile(newFile) {
     const result = await fetchViaApi('POST', '/file', newFile)
+    return result.data
     //update state list of projects
     //setProjects([...projects, newProject])
   }

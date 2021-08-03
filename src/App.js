@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom"
-import { hot } from "react-hot-loader";
+import { hot } from "react-hot-loader"
 
 import './Components/app/Assets/wwpm-theme/theme.css'
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
+import 'primereact/resources/primereact.min.css'
+import 'primeicons/primeicons.css'
 
 //import Routes from './Components/app/Routes'
 import Routes from '../src/Components/app/routes.js'
@@ -14,8 +14,9 @@ import TokenProvider from "./providers/token/provider"
 import AuthProvider from "./providers/auth/provider"
 import FetchProvider from "./providers/fetch/provider"
 import ProjectsProvider from "./providers/projects/provider"
-import FilesProvider from "./providers/files/provider";
-import ProfileProvider from "./providers/profile/provider";
+import FilesProvider from "./providers/files/provider"
+import ProfileProvider from "./providers/profile/provider"
+import LibraryProvider from "./providers/library/provider"
 
 const App = () => {
   
@@ -26,9 +27,11 @@ const App = () => {
           <AuthProvider>
             <FilesProvider>
               <ProfileProvider>
-                <ProjectsProvider>
-                  <Routes />
-                </ProjectsProvider>
+                <LibraryProvider>
+                  <ProjectsProvider>
+                    <Routes />
+                  </ProjectsProvider>
+                </LibraryProvider>
               </ProfileProvider>
             </FilesProvider>
           </AuthProvider>

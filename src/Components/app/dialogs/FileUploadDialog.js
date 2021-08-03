@@ -11,7 +11,7 @@ const FileUploadDialog = (props) => {
   const [showDialog, setShowDialog] = useState(false)
   const [file, setFile] = useState(null)
   const { uploadFile } = useFiles()
-  const { label, mediaType, projectId } = props
+  const { label, mediaType, projectId, onUpload } = props
 
   const handleSelectedFile = (e) => {
     e.preventDefault();
@@ -23,15 +23,16 @@ const FileUploadDialog = (props) => {
     setShowDialog(false)
   }
 
-  const onUpload = async (event) => {
+  const upload = async (event) => {
     event.preventDefault();
     const data = new FormData(event.target)
-    data.append('file', file, label)
+    data.append('file', file)
     data.append('mediaType',mediaType)
     data.append('projectId', projectId)
-    await uploadFile(data)
+    const response = await uploadFile(data)
     setFile(null)
     setShowDialog(false)
+    onUpload(response.Location)
   }
 
 ////////////////////////
@@ -53,7 +54,7 @@ const FileUploadDialog = (props) => {
           <div className="p-grid p-fluid">
             <div className="p-col-4 "><label htmlFor="name">File</label></div>
             <div className="p-col-8">
-              <form onSubmit={onUpload}>
+              <form onSubmit={upload}>
                 <div className="form-group">
                   <input
                     type="file"
