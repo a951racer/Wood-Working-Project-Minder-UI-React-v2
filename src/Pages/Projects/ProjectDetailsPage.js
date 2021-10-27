@@ -5,6 +5,7 @@ import { TabView,TabPanel } from 'primereact/tabview';
 import PageLayout from '../../Components/app/PageLayout'
 import ProjectDetails from '../../Components/Projects/ProjectDetailsPanel'
 import Boards from '../../Components/Boards/Boards'
+import Reports from '../../Components/Reports/Reports'
 
 import useProjects from '../../providers/projects/hook'
 
@@ -30,7 +31,7 @@ const ProjectDetailsPage = (props) => {
                   Files Component
               </TabPanel>
               <TabPanel header="Reports">
-                  Reports Component
+                  <Reports reports={currentProject.reports} />
               </TabPanel>
               <TabPanel header="Notes">
                   Notes Component
