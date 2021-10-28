@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Redirect } from 'react-router-dom'
-import { Menu } from 'primereact/menu'
+import { BrowserRouter as Router, Redirect, useLocation } from 'react-router-dom'
 
-import useAuth from '../../providers/auth/hook'
+import useAuth from '../../../providers/auth/hook'
 import './MainNavigator.css';
 
 
@@ -12,21 +11,29 @@ const MainNavigator = () => {
   const [showMenu, setShowMenu] = useState()
   const { logout } =  useAuth()
 
+  const location = useLocation()
+  console.log('loc: ', location.pathname)
+
   const items = [
     {
       label:'Projects',
       icon: 'pi pi-fw pi-folder-open',
-      command: () => handleClick(true, '/projects')
+      path: '/projects'
+    },
+    {
+      label:'Jobs',
+      icon: 'pi pi-fw pi-folder-open',
+      path: '/jobs'
     },
     {
       label:'Library',
       icon: 'pi pi-fw pi-user-edit',
-      command: () => handleClick(true, '/library')
+      path: '/library'
     },
     {
       label:'Profile',
       icon: 'pi pi-fw pi-user-edit',
-      command: () => handleClick(true, '/profile')
+      path: '/profile'
     },
     {
       separator: true
@@ -37,8 +44,6 @@ const MainNavigator = () => {
       command: () => logout()
     }
   ]
-
-  let menu = React.createRef()
 
   const handleClick = (match, page) => {
     if (match) {
@@ -52,10 +57,20 @@ const MainNavigator = () => {
   }
   return (
     <React.Fragment>
-      <button className="menu-button" onClick={(event) => menu.toggle(event)}>{<i className="pi pi-bars"></i> }</button>
         <Router>
-          <Menu model={items} popup={true} ref={el => menu = el} id="popup_menu"/>
-        </Router>
+            {
+              items.map((item, index) => {
+                return (
+                  item.separator ? 
+                    <div className='menu-separator' key={index}></div>
+                  :
+                  <div className={location.pathname === item.path ? 'menu-selected' : 'menu-item'} key={index} onClick={() => handleClick(true, item.path)}>
+                    <i className={item.icon} />{item.label}
+                  </div>
+                )
+              })
+            }
+       </Router>
     </React.Fragment>
     )
 }
