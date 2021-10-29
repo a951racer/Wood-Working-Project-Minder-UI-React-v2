@@ -14,6 +14,7 @@ import TokenProvider from "./providers/token/provider"
 import AuthProvider from "./providers/auth/provider"
 import FetchProvider from "./providers/fetch/provider"
 import ProjectsProvider from "./providers/projects/provider"
+import JobsProvider from "./providers/jobs/provider"
 import FilesProvider from "./providers/files/provider"
 import ProfileProvider from "./providers/profile/provider"
 import LibraryProvider from "./providers/library/provider"
@@ -29,7 +30,9 @@ const App = () => {
               <ProfileProvider>
                 <LibraryProvider>
                   <ProjectsProvider>
-                    <Routes />
+                    <JobsProvider>
+                      <Routes />
+                    </JobsProvider>
                   </ProjectsProvider>
                 </LibraryProvider>
               </ProfileProvider>

@@ -1,0 +1,31 @@
+.menu-item {
+    border-top: 4px groove rgba(217, 154, 96, 0.1);
+    height: 50px;
+    padding: 10px 0 10px 20px;
+    font-size: 24px;
+    background: burlywood;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.menu-separator {
+    border-top: 4px groove rgba(217, 154, 96, 0.1);
+    height: 50px;
+    padding: 10px 0 10px 20px;
+    font-size: 24px;
+    background: burlywood;
+}
+
+.menu-selected {
+    background-color: none;
+    height: 50px;
+    padding: 10px 0 10px 20px;
+    font-size: 24px;
+}
+
+.menu-filler {
+    background: burlywood;
+}
