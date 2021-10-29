@@ -64,7 +64,7 @@ const MainNavigator = () => {
                   item.separator ? 
                     <div className='menu-separator' key={index}></div>
                   :
-                  <div className={location.pathname === item.path ? 'menu-selected' : 'menu-item'} key={index} onClick={() => handleClick(true, item.path)}>
+                  <div className={location.pathname === item.path ? 'menu-selected' : 'menu-item'} key={index} onClick={item.command ? item.command : () => handleClick(true, item.path)}>
                     <i className={item.icon} />{item.label}
                   </div>
                 )
