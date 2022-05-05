@@ -9,7 +9,7 @@ import NewLibraryItemDialog from '../../Components/app/dialogs/NewLibraryItemDia
 
 const LibraryPage = () => {
   const [editingItem, setEditingItem] = useState()
-  const { items, fetchItems, resetCurrentItem } = useLibrary()
+  const { items, fetchItems, resetCurrentItem, createItem } = useLibrary()
 
     useEffect(() => {
       fetchItems()
@@ -21,9 +21,13 @@ const LibraryPage = () => {
     useEffect(() => {
     }, [items])
 
+  const onSave = (item) => {
+    createItem(item)
+  }
+
   return (
     <PageLayout title="Library">
-      <NewLibraryItemDialog />
+      <NewLibraryItemDialog mediaType='library' onSave={(item) => onSave(item)}/>
       <LibraryList items={items}/>
     </PageLayout>
   )

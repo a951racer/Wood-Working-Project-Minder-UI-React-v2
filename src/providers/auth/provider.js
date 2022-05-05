@@ -12,18 +12,15 @@ const AuthProvider = ({children}) => {
   const [userId, setUserId] = useState(null)
   const [profile, setProfile] = useState(null)
   const history = useHistory()
-  const { setLocalToken, deleteToken } = useToken()
+  const { setLocalToken, hasLocalToken, deleteToken } = useToken()
   const { fetchViaApi } = useFetch()
 
   async function login(email, password) {
-    //setBusy('login', true)
     let result = await fetchViaApi('POST', '/auth/login', {email, password})
     await setLocalToken(result.token)
     setProfile(result)
     setUserId(result._id)
     setUserStatus('loggedIn')
-    //setProfile????
-    //setBusy('login', false)
   }
 
   async function logout() {
@@ -33,6 +30,14 @@ const AuthProvider = ({children}) => {
     history.push('/')
   }
 
+  async function getUserStatus() {
+    if (hasLocalToken)
+      await setUserStatus('loggedIn')
+    else
+      await setUserStatus('loggedOut')
+    return getUserStatus
+  }
+
   return (
     <AuthContext.Provider value={{
       userStatus,
@@ -40,6 +45,7 @@ const AuthProvider = ({children}) => {
       profile,
       login,
       logout,
+      getUserStatus,
     }}>
       {children}
     </AuthContext.Provider>

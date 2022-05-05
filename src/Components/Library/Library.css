@@ -56,6 +56,14 @@
   text-align: right;
 }
 
+.project-name {
+  font-size: 18pt;
+  font-weight: bold;
+  color: #3e2312;
+}
+
+
+
 /* Project List Item */
 .tags {
   margin-top: 15px;
@@ -104,6 +112,7 @@
   align-items: center;
   padding: 1rem;
   width: 100%;
+  cursor: pointer;
 }
 
 .dataview-demo .product-list-item img {

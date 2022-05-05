@@ -8,7 +8,7 @@ import 'primeflex/primeflex.css';
 import Chip from '../app/Chip/Chip'
 
 const LibraryList = ({items}) => {
-  const [layout, setLayout] = useState('grid')
+  const [layout, setLayout] = useState('list')
   const [rows, setRows] = useState(8)
   const [sortKey, setSortKey] = useState(null)
   const [sortOrder, setSortOrder] = useState(null)
@@ -67,15 +67,24 @@ const LibraryList = ({items}) => {
 
   const renderGridItem = (item) => {
     return (
-      <div className="p-col-12 p-md-1">
+      <div className="p-col-12 p-md-3">
         <div className="product-grid-item card" onClick={() => clickHandler(item._id)}>
           <div className="product-grid-item-content">
             <div className="product-name">{item.title}</div>
             <Rating value={item.rating} readOnly cancel={false}></Rating>
-            <img className='cover-image p-shadow-7' src={item.path} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here'></img>
-          </div>
+            <img className='p-shadow-7' src={item.path} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here'></img>
+            <div className='tags-grid'>
+              <span>
+                {
+                  item.tags.map((tag, index) => (
+                      <Chip key={index} label={tag} />
+                  ))
+                }
+              </span>
+            </div>
           </div>
         </div>
+      </div>
   )
   }
 

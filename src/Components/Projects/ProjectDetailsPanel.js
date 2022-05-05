@@ -68,8 +68,7 @@ const ProjectDetails = ({project}) => {
                 </div>
                 <div className="project-data">
                   <div className="data-item">
-                    <span className='label'>Project Name:</span>
-                    <span> {projectDetails.name}</span>
+                    <span className="project-name"> {projectDetails.name}</span>
                   </div>
 
                   <div className="data-item">
@@ -87,8 +86,18 @@ const ProjectDetails = ({project}) => {
                   </div>
 
                   <div className="data-item">
-                    <span className='label'>Google Sheets Id:</span> 
-                    <span> {projectDetails.sheetsId}</span>
+                    <span className='label'>Customer:</span>
+                    <span> {projectDetails.customer}</span>
+                  </div>
+
+                  <div className="data-item">
+                    <span className='label'>Start Date:</span>
+                    <span> {projectDetails.startDate}</span>
+                  </div>
+
+                  <div className="data-item">
+                    <span className='label'>End Date:</span>
+                    <span> {projectDetails.endDate}</span>
                   </div>
 
                   <div className="data-item">
@@ -138,11 +147,6 @@ const ProjectDetails = ({project}) => {
               <div className="data-item">
                 <span className='label'>Description:</span>
                 <InputText value={projectDetails.description} onChange={(e) => updateProperty('description', e.target.value)} />
-              </div>
-
-              <div className="data-item">
-                <span className='label'>Google Sheets Id:</span>
-                <InputText value={projectDetails.sheetsId} onChange={(e) => updateProperty('sheetsId', e.target.value)} />
               </div>
 
               <div className="data-item">

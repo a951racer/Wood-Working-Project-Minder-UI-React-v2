@@ -20,7 +20,7 @@ const PageLayout = ({title, children}) => {
       <div className="Menu-Spacer"></div>
       <div className="Content-Spacer"></div>
       <div className="Menu">
-        <div classname="Menu-Area">
+        <div className="Menu-Area">
           <MainNavigator />
         </div>
         <div className="Menu-Filler"></div>

@@ -1,21 +1,39 @@
 import React, { useState, useEffect } from 'react'
 //import { Growl } from 'primereact/growl'
-import { TabView,TabPanel } from 'primereact/tabview';
+import { TabView, TabPanel } from 'primereact/tabview';
 
 import PageLayout from '../../Components/app/PageLayout'
 import JobDetails from '../../Components/Jobs/JobDetailsPanel'
 import Boards from '../../Components/Boards/Boards'
 import Reports from '../../Components/Reports/Reports'
+import TimeTable from '../../Components/Time/TimeTable'
+import MaterialTable from '../../Components/Material/MaterialTable'
+import FilesTable from '../../Components/Files/FilesTable'
 
 import useJobs from '../../providers/jobs/hook'
 
 const JobDetailsPage = (props) => {
   const [id, setId] = useState(props.match.params.id)
-  const { fetchJobDetails, currentJob } = useJobs()
+  const { fetchJobDetails, currentJob, saveJob } = useJobs()
 
   useEffect(() => {
     fetchJobDetails(id)
   }, [])
+
+  const updateTime = async (timeSlips) => {
+    currentJob.time = timeSlips
+    await saveJob(currentJob)
+  }
+
+  const updateMaterial = async (material) => {
+    currentJob.material = material
+    await saveJob(currentJob)
+  }
+
+  const updateFiles = async (files) => {
+    currentJob.files = files
+    await saveJob(currentJob)
+  }
 
   return (
       <PageLayout title={currentJob ? currentJob.name : 'Loading...'}>
@@ -25,10 +43,16 @@ const JobDetailsPage = (props) => {
             <br />
             <TabView>
               <TabPanel header="Boards">
-                <Boards boards={currentJob.boards} />
+                <Boards boards={currentJob.boards} uploadButton={false} />
+              </TabPanel>
+              <TabPanel header="Time">
+                <TimeTable timeSlips={currentJob.timeSlips} updateTime={updateTime} />
+              </TabPanel>
+              <TabPanel header="Materials">
+                  <MaterialTable material={currentJob.materials} updateMaterial={updateMaterial}/>
               </TabPanel>
               <TabPanel header="Library">
-                  Files Component
+                  <FilesTable files={currentJob.library} updateFiles={(fileList)=>updateFiles(fileList)} mediaType='job-media' id={id}/>
               </TabPanel>
               <TabPanel header="Reports">
                   <Reports reports={currentJob.reports} />

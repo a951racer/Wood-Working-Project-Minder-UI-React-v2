@@ -6,13 +6,12 @@ import { Chips } from 'primereact/chips'
 
 import useFiles from '../../../providers/files/hook'
 
-const FileUploadDialog = (props) => {
+const FileUploadDialog = ({label, mediaType, id, onUpload}) => {
 
   const [showDialog, setShowDialog] = useState(false)
   const [file, setFile] = useState(null)
   const { uploadFile } = useFiles()
-  const { label, mediaType, projectId, onUpload } = props
-
+  
   const handleSelectedFile = (e) => {
     e.preventDefault();
     setFile(e.target.files[0])
@@ -27,8 +26,8 @@ const FileUploadDialog = (props) => {
     event.preventDefault();
     const data = new FormData(event.target)
     data.append('file', file)
-    data.append('mediaType',mediaType)
-    data.append('projectId', projectId)
+    data.append('mediaType', mediaType)
+    data.append('id', id)
     const response = await uploadFile(data)
     setFile(null)
     setShowDialog(false)

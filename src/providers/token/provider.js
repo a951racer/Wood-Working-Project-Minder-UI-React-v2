@@ -7,7 +7,7 @@ const TokenProvider = ({children}) => {
   const [ token, setToken ] = useState(null)
 
   function getToken() {
-    return token
+    return localStorage.getItem('WWPM_AUTH_TOKEN')
   }
 
   async function setLocalToken(userToken) {
@@ -20,11 +20,16 @@ const TokenProvider = ({children}) => {
     await setToken(null)
   }
 
+  async function hasLocalToken() {
+    return !!localStorage.getItem('WWPM_AUTH_TOKEN')
+  }
+
   return (
     <TokenContext.Provider value={{
       getToken,
       setLocalToken,
-      deleteToken
+      deleteToken,
+      hasLocalToken
     }}>
       {children}
     </TokenContext.Provider>

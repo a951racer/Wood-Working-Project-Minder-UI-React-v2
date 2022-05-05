@@ -5,9 +5,8 @@ import { Dialog } from 'primereact/dialog'
 import { Chips } from 'primereact/chips'
 import FileUploadDialog from './FileUploadDialog';
 
-import useLibrary from '../../../providers/library/hook'
 
-const NewLibraryItemDialog = () => {
+const NewLibraryItemDialog = ({mediaType, id, onSave}) => {
   const itemDefault = {
     title: '',
     path: '',
@@ -16,7 +15,6 @@ const NewLibraryItemDialog = () => {
   }
   const [showDialog, setShowDialog] = useState(false)
   const [item, setItem] = useState(itemDefault)
-  const { createItem } = useLibrary()
 
   const updateProperty = (property, value) => {
     const updatedItem = {...item, [property]: value}
@@ -29,9 +27,9 @@ const NewLibraryItemDialog = () => {
   }
 
   const save = async () => {
-    createItem(item)
     setItem(itemDefault)
     setShowDialog(false)
+    onSave(item)
   }
 
   const onUpload = (path) => {
@@ -67,7 +65,7 @@ const NewLibraryItemDialog = () => {
             <InputText id="description" onChange={(e) => {updateProperty('description', e.target.value)}} value={item.description}/>
           </div>
 
-          <FileUploadDialog label='Library Item' mediaType='library' onUpload={(path) => onUpload(path)} />
+          <FileUploadDialog label='Library Item' mediaType={mediaType} id={id} onUpload={(path) => onUpload(path)} />
 
           <div className="p-col-4 "><label htmlFor="path">Path</label></div>
           <div className="p-col-8">

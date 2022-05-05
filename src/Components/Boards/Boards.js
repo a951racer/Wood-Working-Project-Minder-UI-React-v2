@@ -7,7 +7,7 @@ import FileUploadDialog from '../app/dialogs/FileUploadDialog'
 import useProjects from '../../providers/projects/hook'
 import useFetch from '../../providers/fetch/hook'
 
-const Boards = ({boards}) => {
+const Boards = ({boards, uploadButton}) => {
   const { currentProject, importBoards } = useProjects()
   const { fetchViaApi } = useFetch()
 
@@ -19,11 +19,15 @@ const Boards = ({boards}) => {
   return (
       <>
         <div>
-          <FileUploadDialog label='CSV' mediaType='boards' projectId={currentProject._id}/>
-          <span className='button-box'>
-            <Button className='p-shadow-3' type="button" label="Re-Import" icon="pi pi-fw pi-plus" style={{marginBottom: '.5em'}} onClick={() => importBoards()} ></Button>
-          </span>
-        </div>
+          {uploadButton &&
+            <>
+              <FileUploadDialog label='CSV' mediaType='boards' projectId={currentProject._id}/>
+              <span className='button-box'>
+                <Button className='p-shadow-3' type="button" label="Re-Import" icon="pi pi-fw pi-plus" style={{marginBottom: '.5em'}} onClick={() => importBoards()} ></Button>
+              </span>
+            </>
+          }
+          </div>
         <Accordion multiple={true}>
           <AccordionTab header="Sheet Goods" disabled={!sheetBoards.length}>
             <BoardTable boards={sheetBoards} />

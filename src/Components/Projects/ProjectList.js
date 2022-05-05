@@ -8,8 +8,6 @@ import 'primeflex/primeflex.css';
 
 import Chip from '../app/Chip/Chip'
 
-import ProjectListItem from './ProjectListItem'
-
 const ProjectList = ({projects}) => {
   const [layout, setLayout] = useState('list')
   const [rows, setRows] = useState(8)
@@ -70,21 +68,21 @@ const ProjectList = ({projects}) => {
     return (
       <div className="p-col-12 p-md-3">
         <div className="product-grid-item card" onClick={() => clickHandler(project._id)}>
-        <div className="product-grid-item-content">
-            <div className="product-name">{project.name}</div>
-            <div className="product-description">{project.description}</div>
-            <Rating value={project.rating} readOnly cancel={false}></Rating>
-            <img className='p-shadow-7' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here'></img>
-            </div>
-            <div className='tags-grid'>
-              <span>
-                {
-                  project.tags.map((tag, index) => (
-                      <Chip key={index} label={tag} />
-                  ))
-                }
-              </span>
-            </div>
+          <div className="product-grid-item-content">
+              <div className="product-name">{project.name}</div>
+              <div className="product-description">{project.description}</div>
+              <Rating value={project.rating} readOnly cancel={false}></Rating>
+              <img className='p-shadow-7' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here'></img>
+              <div className='tags-grid'>
+                <span>
+                  {
+                    project.tags.map((tag, index) => (
+                        <Chip key={index} label={tag} />
+                    ))
+                  }
+                </span>
+              </div>
+          </div>
         </div>
     </div>
   )
