@@ -7,6 +7,7 @@ import ProjectDetails from '../../Components/Projects/ProjectDetailsPanel'
 import Boards from '../../Components/Boards/Boards'
 import Reports from '../../Components/Reports/Reports'
 import FilesTable from '../../Components/Files/FilesTable';
+import NoteTable from '../../Components/Notes/NotesTable';
 
 import useProjects from '../../providers/projects/hook'
 
@@ -20,6 +21,11 @@ const ProjectDetailsPage = (props) => {
 
   const updateFiles = async (files) => {
     currentProject.files = files
+    await saveProject(currentProject)
+  }
+
+  const updateNotes = async (notes) => {
+    currentProject.notes = notes
     await saveProject(currentProject)
   }
 
@@ -40,7 +46,7 @@ const ProjectDetailsPage = (props) => {
                   <Reports reports={currentProject.reports} />
               </TabPanel>
               <TabPanel header="Notes">
-                  Notes Component
+                  <NoteTable notes={currentProject.notes} updateNotes={(notes)=>updateNotes(notes)} />
               </TabPanel>
             </TabView>
           </div>

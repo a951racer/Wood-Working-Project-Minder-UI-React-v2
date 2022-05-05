@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import useFetch from '../../providers/fetch/hook'
 
-const TimeTable = ({timeSlips, updateTime}) => {
+const TimeTable = ({timeSlips = [], updateTime}) => {
   const [editingTime, setEditingTime] = useState()
   const [timeSlipList, setTimeSlipList] = useState(timeSlips)
   const { fetchViaApi } = useFetch()

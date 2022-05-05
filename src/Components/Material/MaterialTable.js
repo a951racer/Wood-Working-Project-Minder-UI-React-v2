@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import useFetch from '../../providers/fetch/hook'
 
-const MaterialTable = ({material, updateMaterial}) => {
+const MaterialTable = ({material = [], updateMaterial}) => {
   const [editingMaterial, setEditingMaterial] = useState()
   const [materialList, setMaterialList] = useState(material)
   const { fetchViaApi } = useFetch()

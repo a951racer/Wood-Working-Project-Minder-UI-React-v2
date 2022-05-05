@@ -9,6 +9,7 @@ import Reports from '../../Components/Reports/Reports'
 import TimeTable from '../../Components/Time/TimeTable'
 import MaterialTable from '../../Components/Material/MaterialTable'
 import FilesTable from '../../Components/Files/FilesTable'
+import NoteTable from '../../Components/Notes/NotesTable';
 
 import useJobs from '../../providers/jobs/hook'
 
@@ -35,6 +36,11 @@ const JobDetailsPage = (props) => {
     await saveJob(currentJob)
   }
 
+  const updateNotes = async (notes) => {
+    currentJob.notes = notes
+    await saveJob(currentJob)
+  }
+
   return (
       <PageLayout title={currentJob ? currentJob.name : 'Loading...'}>
         {currentJob &&
@@ -58,7 +64,7 @@ const JobDetailsPage = (props) => {
                   <Reports reports={currentJob.reports} />
               </TabPanel>
               <TabPanel header="Notes">
-                  Notes Component
+                  <NoteTable notes={currentJob.notes} updateNotes={(notes)=>updateNotes(notes)} />
               </TabPanel>
             </TabView>
           </div>
