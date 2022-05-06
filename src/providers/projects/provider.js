@@ -25,13 +25,12 @@ const ProjectsProvider = ({children}) => {
 
   async function saveProject(updatedProject) {
     const result = await fetchViaApi('PUT', `/project/${updatedProject._id}`, updatedProject)
-    //update state projects
+    await fetchProjects()
   }
 
   async function createProject(newProject) {
     const result = await fetchViaApi('POST', '/project', newProject)
-    //update state list of projects
-    setProjects([...projects, newProject])
+    setProjects([...projects, result])
   }
 
   async function importBoards() {
