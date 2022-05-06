@@ -30,8 +30,7 @@ const JobsProvider = ({children}) => {
 
   async function createJob(newJob) {
     const result = await fetchViaApi('POST', '/job', newJob)
-    //update state list of jobs
-    setJobs([...jobs, newJob])
+    setJobs([...jobs, result])
   }
 
   async function importBoards() {

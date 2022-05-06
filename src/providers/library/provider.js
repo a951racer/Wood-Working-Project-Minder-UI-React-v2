@@ -30,7 +30,7 @@ const LibraryProvider = ({children}) => {
 
   async function createItem(newItem) {
     const result = await fetchViaApi('POST', '/library', newItem)
-    setItems([...items, newItem])
+    setItems([...items, result])
   }
 
   return (
