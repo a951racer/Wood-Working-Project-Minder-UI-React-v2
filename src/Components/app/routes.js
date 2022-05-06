@@ -13,14 +13,14 @@ import LibraryPage from '../../Pages/Library/LibraryPage'
 import LibraryItemPage from '../../Pages/Library/LibraryItemPage'
 
 export default function Routes () {
-  const { getUserStatus } = useAuth()
+  const { userStatus, getUserStatus } = useAuth()
 
   return (
     <Switch>
-      {getUserStatus === 'loggedOut' && <Route path="/auth" component={AuthPage} />}
-      {getUserStatus === 'loggedOut' && <Redirect to="/auth" exact />}
-      {getUserStatus === 'loggedIn' && <Redirect from="/" to="/projects" exact />}
-      {getUserStatus === 'loggedIn' && <Redirect from="/auth" to="/projects" exact />}
+      {userStatus === 'loggedOut' && <Route path="/auth" component={AuthPage} />}
+      {userStatus === 'loggedOut' && <Redirect to="/auth" exact />}
+      {userStatus === 'loggedIn' && <Redirect from="/" to="/projects" exact />}
+      {userStatus === 'loggedIn' && <Redirect from="/auth" to="/projects" exact />}
       {<Route path="/projects" component={ProjectsPage} />}
       {<Route path="/project-details/:id" component={ProjectDetailsPage} />}
       {<Route path="/jobs" component={JobsPage} />}

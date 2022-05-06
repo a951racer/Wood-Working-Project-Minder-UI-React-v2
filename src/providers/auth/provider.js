@@ -32,10 +32,9 @@ const AuthProvider = ({children}) => {
 
   async function getUserStatus() {
     if (hasLocalToken)
-      await setUserStatus('loggedIn')
+      return 'loggedIn'
     else
-      await setUserStatus('loggedOut')
-    return getUserStatus
+      return 'loggedOut'
   }
 
   return (

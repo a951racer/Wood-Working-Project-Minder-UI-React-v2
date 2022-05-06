@@ -20,7 +20,6 @@ import ProfileProvider from "./providers/profile/provider"
 import LibraryProvider from "./providers/library/provider"
 
 const App = () => {
-  
   return (
     <BrowserRouter>
       <TokenProvider>
