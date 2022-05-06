@@ -12,7 +12,6 @@ const MainNavigator = () => {
   const { logout } =  useAuth()
 
   const location = useLocation()
-  console.log('loc: ', location.pathname)
 
   const items = [
     {

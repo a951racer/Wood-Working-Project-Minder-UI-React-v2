@@ -1809,6 +1809,7 @@ body .p-tabview.p-tabview-top .p-tabview-nav li.p-highlight:hover a .p-tabview-l
 }
 body .p-tabview.p-tabview-top .p-tabview-nav li.p-tabview-selected a, body .p-tabview.p-tabview-bottom .p-tabview-nav li.p-tabview-selected a, body .p-tabview.p-tabview-left .p-tabview-nav li.p-tabview-selected a, body .p-tabview.p-tabview-right .p-tabview-nav li.p-tabview-selected a {
   cursor: pointer;
+  background-color: white;
 }
 body .p-tabview.p-tabview-top .p-tabview-nav {
   margin-bottom: -1px;

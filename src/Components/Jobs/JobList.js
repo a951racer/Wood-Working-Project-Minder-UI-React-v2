@@ -8,8 +8,6 @@ import 'primeflex/primeflex.css';
 
 import Chip from '../app/Chip/Chip'
 
-import JobListItem from './JobListItem'
-
 const JobList = ({jobs}) => {
   const [layout, setLayout] = useState('list')
   const [rows, setRows] = useState(8)
@@ -45,7 +43,7 @@ const JobList = ({jobs}) => {
     return (
         <div className="p-col-12">
             <div className="product-list-item" onClick={() => clickHandler(job._id)}>
-                <img className='p-shadow-7' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/' + job._id + '/Thumbnail.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Job+Pic.png'} alt='pic here'></img>
+                <img className='p-shadow-7' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/' + job._id + '/Thumbnail.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here'></img>
                 <div className="product-list-detail">
                   <div className="product-name">{job.name}</div>
                   <div className="product-description">{job.description}</div>
@@ -74,7 +72,7 @@ const JobList = ({jobs}) => {
             <div className="product-name">{job.name}</div>
             <div className="product-description">{job.description}</div>
             <Rating value={job.rating} readOnly cancel={false}></Rating>
-            <img className='p-shadow-7' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + job._id + '.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Job+Pic.png'} alt='pic here'></img>
+            <img className='p-shadow-7' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + job._id + '.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here'></img>
             </div>
             <div className='tags-grid'>
               <span>
@@ -104,8 +102,8 @@ const JobList = ({jobs}) => {
   const header = renderHeader();
   
   function clickHandler (id) {
-    setRedirect(true)
     setRedirectTo('/job-details/' + id)
+    setRedirect(true)
   }
 
   if (redirect) {

@@ -13,7 +13,7 @@ import LibraryPage from '../../Pages/Library/LibraryPage'
 import LibraryItemPage from '../../Pages/Library/LibraryItemPage'
 
 export default function Routes () {
-  const { userStatus } = useAuth()
+  const { userStatus, getUserStatus } = useAuth()
 
   return (
     <Switch>

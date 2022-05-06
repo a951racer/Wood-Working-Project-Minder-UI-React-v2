@@ -55,7 +55,7 @@ const NewProjectDialog = () => {
             <InputText id="name" onChange={(e) => {updateProperty('name', e.target.value)}} value={project.name}/>
           </div>
 
-          <div className="p-col-4 "><label htmlFor="type">Tags</label></div>
+          <div className="p-col-4 "><label htmlFor="tags">Tags</label></div>
           <div className="p-col-8">
             <Chips id="tags" onChange={(e) => {updateProperty('tags', e.target.value)}} value={project.tags}/>
           </div>

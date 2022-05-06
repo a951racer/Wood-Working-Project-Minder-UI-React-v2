@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import moment from 'moment'
 import { InputText } from 'primereact/inputtext'
 import { Card } from 'primereact/card'
 import { OverlayPanel } from 'primereact/overlaypanel'
@@ -31,15 +32,14 @@ const JobDetails = ({job}) => {
     setJobSnapshot(null)
   }
 
-  const updateProperty = (property, value) => {
+  const updateProperty = async (property, value) => {
     const updatedJobDetails = {...jobDetails, [property]: value}
-    setJobDetails(updatedJobDetails)
+    await setJobDetails(updatedJobDetails)
   }
 
   const saveJobDetails = async () => {
     setIsEditing(false)
     await saveJob(jobDetails)
-    //this.growl.show({severity: 'success', summary: 'Saved', detail: 'JobDetails has been updated'})
   }
 
   const footer = 
@@ -59,7 +59,7 @@ const JobDetails = ({job}) => {
                     <img 
                       className="cover-image"
                       src={imagePath}
-                      onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Job+Pic.png'}
+                      onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
                       alt="pic here"
                       onClick={(e) => op.toggle(e)}
                     />
@@ -68,8 +68,7 @@ const JobDetails = ({job}) => {
                 </div>
                 <div className="job-data">
                   <div className="data-item">
-                    <span className='label'>Job Name:</span>
-                    <span> {jobDetails.name}</span>
+                    <span className='job-name'> {jobDetails.name}</span>
                   </div>
 
                   <div className="data-item">
@@ -87,8 +86,18 @@ const JobDetails = ({job}) => {
                   </div>
 
                   <div className="data-item">
-                    <span className='label'>Google Sheets Id:</span> 
-                    <span> {jobDetails.sheetsId}</span>
+                    <span className='label'>Customer:</span>
+                    <span> {jobDetails.customer}</span>
+                  </div>
+
+                  <div className="data-item">
+                    <span className='label'>Start Date:</span>
+                    <span> {moment(jobDetails.startDate).format('MM/DD/YYYY')}</span>
+                  </div>
+
+                  <div className="data-item">
+                    <span className='label'>End Date:</span>
+                    <span> {moment(jobDetails.endDate).format('MM/DD/YYYY')}</span>
                   </div>
 
                   <div className="data-item">
@@ -102,7 +111,7 @@ const JobDetails = ({job}) => {
             <OverlayPanel ref={el => op = el} showCloseIcon={true}>
               <img
                 src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + job._id + '.png'}
-                onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Job+Pic.png'}
+                onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
                 alt={jobDetails.name}
               />
             </OverlayPanel>
@@ -119,7 +128,7 @@ const JobDetails = ({job}) => {
             <div className="job-image">
               <img className="cover-image"
                 src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + job._id + '.png'}
-                onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Job+Pic.png'}
+                onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
                 alt="pic here"
                 onClick={(e) => op.toggle(e)}
               ></img>
@@ -141,8 +150,18 @@ const JobDetails = ({job}) => {
               </div>
 
               <div className="data-item">
-                <span className='label'>Google Sheets Id:</span>
-                <InputText value={jobDetails.sheetsId} onChange={(e) => updateProperty('sheetsId', e.target.value)} />
+                <span className='label'>Customer:</span>
+                <InputText value={jobDetails.customer} onChange={(e) => updateProperty('customer', e.target.value)} />
+              </div>
+
+              <div className="data-item">
+                <span className='label'>Start Date:</span>
+                <InputText value={jobDetails.startDate} onChange={(e) => updateProperty('startDate', e.target.value)} />
+              </div>
+
+              <div className="data-item">
+                <span className='label'>End Date:</span>
+                <InputText value={jobDetails.endDate} onChange={(e) => updateProperty('endDate', e.target.value)} />
               </div>
 
               <div className="data-item">
@@ -156,7 +175,7 @@ const JobDetails = ({job}) => {
         <OverlayPanel ref={el => op = el} showCloseIcon={true}>
           <img
             src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + job._id + '.png'} alt={jobDetails.name}
-            onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Job+Pic.png'}
+            onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
           />
         </OverlayPanel>
       </>
