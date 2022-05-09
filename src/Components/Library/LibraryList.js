@@ -2,28 +2,19 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Redirect } from 'react-router-dom'
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { Rating } from 'primereact/rating'
+import { Panel } from 'primereact/panel';
 
 import 'primeflex/primeflex.css';
 
 import Chip from '../app/Chip/Chip'
 
 const LibraryList = ({items}) => {
-  const [layout, setLayout] = useState('list')
-  const [rows, setRows] = useState(8)
+  const [layout, setLayout] = useState('grid')
   const [sortKey, setSortKey] = useState(null)
   const [sortOrder, setSortOrder] = useState(null)
   const [sortField, setSortField] = useState(null)
   const [redirect, setRedirect] = useState(false)
   const [redirectTo, setRedirectTo] = useState('')
-
-  const changeLayout = (layout) => {
-    if (layout === 'list') {
-      setRows(8)
-    } else {
-      setRows(12)
-    }
-    setLayout(layout)
-  }
 
   const renderHeader = () => {
     return (
@@ -32,7 +23,7 @@ const LibraryList = ({items}) => {
                 Sorting Placeholder
             </div>
             <div className="p-col-6" style={{textAlign: 'right'}}>
-                <DataViewLayoutOptions layout={layout} onChange={(e) => changeLayout(e.value)} />
+                <DataViewLayoutOptions layout={layout} onChange={(e) => setLayout(e.value)} />
             </div>
         </div>
     );
@@ -40,52 +31,43 @@ const LibraryList = ({items}) => {
 
   const renderListItem = (item) => {
     return (
-        <div className="p-col-12">
-            <div className="product-list-item" >
-                <img className='p-shadow-7' src={item.path} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here' onClick={() => thumbClickHander(item.path)}></img>
-                <div style={{width: '100%'}} onClick={() => clickHandler(item._id)}>
-                  <div className="product-list-detail">
-                    <div className="product-list-action">
-                      <Rating value={item.rating} readOnly cancel={false}></Rating>
-                    </div>
-                    <div className="product-name">{item.title}</div>
-                    <div className="product-description">{item.description}</div>
-                    <span>
-                      {
-                        item.tags.map((tag, index) => (
-                            <Chip key={index} label={tag} />
-                        ))
-                      }
-                    </span>
-                  </div>
-                </div>
+      <div className="p-col-12" onClick={() => clickHandler(item._id)} >
+        <div className="item-details">
+          <div>
+            <div className='p-shadow-3 image-frame-list'>
+              <img className='grid-image' src={item.path} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here' onClick={() => thumbClickHandler(item.path)}></img>
             </div>
-        </div>
-
-    );
-  }
-
-  const renderGridItem = (item) => {
-    return (
-      <div className="p-col-12 p-md-3">
-        <div className="product-grid-item card" onClick={() => clickHandler(item._id)}>
-          <div className="product-grid-item-content">
-            <div className="product-name">{item.title}</div>
-            <Rating value={item.rating} readOnly cancel={false}></Rating>
-            <img className='p-shadow-7' src={item.path} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here'></img>
-            <div className='tags-grid'>
-              <span>
+            <div className="p-grid">
+              <div className="item-data"><Rating value={item.rating} readOnly cancel={false}></Rating></div>
+              <div className="item-data"><b>{item.title}</b></div>
+              <div className="item-data">{item.description}</div>
+              <div className="item-tags">
                 {
                   item.tags.map((tag, index) => (
                       <Chip key={index} label={tag} />
                   ))
                 }
-              </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-  )
+    );
+  }
+
+  const renderGridItem = (item) => {
+    return (
+      <div style={{ padding: '.5em' }} className="p-col-12 p-md-1">
+        <Panel header={item.title} style={{ textAlign: 'center' }} >
+          <div className='centered' onClick={() => clickHandler(item._id)} >
+            <div className='p-shadow-3 image-frame centered' >
+              <img className='grid-image' src={item.path} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here' ></img>
+            </div>
+          </div>
+          <Rating className='grid-rating' value={item.rating} readOnly cancel={false}></Rating>
+        </Panel>
+      </div>
+    )
   }
 
   const itemTemplate = (item, layout) => {
@@ -106,7 +88,7 @@ const LibraryList = ({items}) => {
     setRedirectTo('/library-item/' + id)
   }
 
-  function thumbClickHander (path) {
+  function thumbClickHandler (path) {
     const newWindow = window.open(path, '_blank', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
   }
@@ -125,7 +107,7 @@ const LibraryList = ({items}) => {
                 layout={layout}
                 header={header}
                 itemTemplate={itemTemplate}
-                paginator rows={rows}
+                paginator rows={72}
                 emptyMessage='No Records Found'
                 //sortOrder={sortOrder}
                 //sortField={sortField}

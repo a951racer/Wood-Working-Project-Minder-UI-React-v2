@@ -42,6 +42,11 @@ const JobDetails = ({job}) => {
     await saveJob(jobDetails)
   }
 
+  const onUpload = async (path) => {
+    await updateProperty('coverImage', path)
+    await saveJob(jobDetails)
+  }
+
   const footer = 
     <div style={{marginBottom: '.5em', width: '100px', margin: 'auto'}} ></div>
 
@@ -64,7 +69,7 @@ const JobDetails = ({job}) => {
                       onClick={(e) => op.toggle(e)}
                     />
                   </div>
-                  <FileUploadDialog label='Thumbnail' mediaType='thumbnail' jobId={jobDetails._id}/>
+                  <FileUploadDialog label='Thumbnail' mediaType='thumbnail' id={jobDetails._id} onUpload={(path) => onUpload(path)} />
                 </div>
                 <div className="job-data">
                   <div className="data-item">

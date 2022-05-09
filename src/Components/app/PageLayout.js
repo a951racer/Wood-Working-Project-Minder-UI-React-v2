@@ -28,7 +28,7 @@ const PageLayout = ({title, children}) => {
       <div className="Content">
         {children}
       </div>
-      <div className="Footer">A HobbsSquad Joint &copy; 2021</div>
+      <div className="Footer">A HobbsSquad Joint &copy; 2022</div>
     </div>
   )
 }
