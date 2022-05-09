@@ -15,23 +15,23 @@ const MainNavigator = () => {
 
   const items = [
     {
-      label:'Projects',
-      icon: 'pi pi-fw pi-folder-open',
+      label:'Catalog',
+      icon: 'auto_stories',
       path: '/projects'
     },
     {
       label:'Jobs',
-      icon: 'pi pi-fw pi-folder-open',
+      icon: 'assignment',
       path: '/jobs'
     },
     {
       label:'Library',
-      icon: 'pi pi-fw pi-user-edit',
+      icon: 'collections',
       path: '/library'
     },
     {
       label:'Profile',
-      icon: 'pi pi-fw pi-user-edit',
+      icon: 'settings',
       path: '/profile'
     },
     {
@@ -39,7 +39,7 @@ const MainNavigator = () => {
     },
     {
       label: 'Logout',
-      icon: 'pi pi-fw pi-power-off',
+      icon: 'logout',
       command: () => logout()
     }
   ]
@@ -64,7 +64,8 @@ const MainNavigator = () => {
                     <div className='menu-separator' key={index}></div>
                   :
                   <div className={location.pathname === item.path ? 'menu-selected' : 'menu-item'} key={index} onClick={item.command ? item.command : () => handleClick(true, item.path)}>
-                    <i className={item.icon} />{item.label}
+                    <span className="material-icons menu-icon">{item.icon}</span>
+                    {item.label}
                   </div>
                 )
               })
