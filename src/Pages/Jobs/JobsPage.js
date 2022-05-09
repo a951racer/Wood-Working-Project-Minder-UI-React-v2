@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { ScrollPanel } from 'primereact/scrollpanel'
 //import { Growl } from 'primereact/growl'
 
 import useJobs from '../../providers/jobs/hook'
@@ -23,8 +24,10 @@ const JobPage = () => {
 
   return (
     <PageLayout title="Jobs">
-      <NewJobDialog />
-      <JobList jobs={jobs}/>
+      <ScrollPanel style={{width: '88vw', height: '92vh'}} >
+        <NewJobDialog />
+        <JobList jobs={jobs}/>
+      </ScrollPanel>
     </PageLayout>
   )
 }

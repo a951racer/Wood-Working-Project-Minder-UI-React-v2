@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { ScrollPanel } from 'primereact/scrollpanel'
 //import { Growl } from 'primereact/growl'
 
 import useProjects from '../../providers/projects/hook'
@@ -23,8 +24,10 @@ const ProjectPage = () => {
 
   return (
     <PageLayout title="Projects">
-      <NewProjectDialog />
-      <ProjectList projects={projects}/>
+      <ScrollPanel style={{width: '88vw', height: '92vh'}} >
+        <NewProjectDialog />
+        <ProjectList projects={projects}/>
+      </ScrollPanel>
     </PageLayout>
   )
 }

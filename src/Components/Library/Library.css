@@ -116,8 +116,7 @@
 }
 
 .dataview-demo .product-list-item img {
-  width: 100px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  width: 150px;
   margin-right: 2rem;
 }
 
@@ -160,7 +159,7 @@
 
 .dataview-demo .product-grid-item img {
   width: 75%;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  /*box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);*/
   margin: 2rem 0;
 }
 
@@ -173,40 +172,70 @@
   font-weight: 600;
 }
 
-@media screen and (max-width: 576px) {
-  .dataview-demo .product-list-item {
-      flex-direction: column;
-      align-items: center;
-  }
+/*//////////////////////////////////////////*/
 
-  .dataview-demo .product-list-item img {
-      width: 75%;
-      margin: 2rem 0;
-  }
+.dataview-demo .item-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5em .5em 1em 1em;
+  border-bottom: 1px solid #d9dad9;
+}
 
-  .dataview-demo .product-list-item .product-list-detail {
-      text-align: center;
-  }
+.dataview-demo .item-details > div {
+  display: flex;
+  align-items: center;
+}
 
-  .dataview-demo .product-list-item .product-price {
-      align-self: center;
-  }
-
-  .dataview-demo .product-list-item .product-list-action {
-      display: flex;
-      flex-direction: column;
-  }
-
-  .dataview-demo .product-list-item .product-list-action {
-      margin-top: 2rem;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-  }
+.dataview-demo .item-details > div .image-frame-list {
+  margin-right: 20px;
 }
 
 .p-grid > div {
-  border: solid #e9ecef;
-  border-width: 0 0 2px 0;
+  border: solid white;
+  border-width: 0 0 0 0;
+}
+
+.grid-image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  padding: 5px;
+}
+
+.image-frame {
+  height: 175px;
+  width: 175px;
+  margin-bottom: 3px;
+}
+
+.image-frame-list {
+  height: 105px;
+  width: 105px;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-rating {
+  margin-bottom: 5px;
+}
+
+.item-data {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  width: 100%;
+  padding: .1em .1em;
+}
+
+.item-tags {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  width: 100%;
+  padding: .4em 0;
 }

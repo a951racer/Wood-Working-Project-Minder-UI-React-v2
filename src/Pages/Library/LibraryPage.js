@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { ScrollPanel } from 'primereact/scrollpanel'
 //import { Growl } from 'primereact/growl'
 
 import useLibrary from '../../providers/library/hook'
@@ -27,8 +28,10 @@ const LibraryPage = () => {
 
   return (
     <PageLayout title="Library">
-      <NewLibraryItemDialog mediaType='library' onSave={(item) => onSave(item)}/>
-      <LibraryList items={items}/>
+      <ScrollPanel style={{width: '88vw', height: '92vh'}} >
+        <NewLibraryItemDialog mediaType='library' onSave={(item) => onSave(item)}/>
+        <LibraryList items={items}/>
+      </ScrollPanel>
     </PageLayout>
   )
 }

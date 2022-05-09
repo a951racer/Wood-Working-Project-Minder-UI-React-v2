@@ -2,29 +2,19 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Redirect } from 'react-router-dom'
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { Rating } from 'primereact/rating'
-import { ScrollPanel } from 'primereact/scrollpanel';
+import { Panel } from 'primereact/panel';
 
 import 'primeflex/primeflex.css';
 
 import Chip from '../app/Chip/Chip'
 
 const JobList = ({jobs}) => {
-  const [layout, setLayout] = useState('list')
-  const [rows, setRows] = useState(8)
+  const [layout, setLayout] = useState('grid')
   const [sortKey, setSortKey] = useState(null)
   const [sortOrder, setSortOrder] = useState(null)
   const [sortField, setSortField] = useState(null)
   const [redirect, setRedirect] = useState(false)
   const [redirectTo, setRedirectTo] = useState('')
-
-  const changeLayout = (layout) => {
-    if (layout === 'list') {
-      setRows(8)
-    } else {
-      setRows(8)
-    }
-    setLayout(layout)
-  }
 
   const renderHeader = () => {
     return (
@@ -33,7 +23,7 @@ const JobList = ({jobs}) => {
                 Sorting Placeholder
             </div>
             <div className="p-col-6" style={{textAlign: 'right'}}>
-                <DataViewLayoutOptions layout={layout} onChange={(e) => changeLayout(e.value)} />
+                <DataViewLayoutOptions layout={layout} onChange={(e) => setLayout(e.value)} />
             </div>
         </div>
     );
@@ -41,51 +31,43 @@ const JobList = ({jobs}) => {
 
   const renderListItem = (job) => {
     return (
-        <div className="p-col-12">
-            <div className="product-list-item" onClick={() => clickHandler(job._id)}>
-                <img className='p-shadow-7' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/' + job._id + '/Thumbnail.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here'></img>
-                <div className="product-list-detail">
-                  <div className="product-name">{job.name}</div>
-                  <div className="product-description">{job.description}</div>
-                  <span>
-                    {
-                      job.tags.map((tag, index) => (
-                          <Chip key={index} label={tag} />
-                      ))
-                    }
-                  </span>
-                </div>
-                <div className="product-list-action">
-                  <Rating value={job.rating} readOnly cancel={false}></Rating>
-                </div>
+      <div className="p-col-12" onClick={() => clickHandler(job._id)} >
+        <div className="item-details">
+          <div>
+            <div className='p-shadow-3 image-frame-list'>
+              <img className='grid-image' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/' + job._id + '/Thumbnail.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here' onClick={() => thumbClickHandler(job._id)}></img>
             </div>
-        </div>
-
-    );
-  }
-
-  const renderGridItem = (job) => {
-    return (
-      <div className="p-col-12 p-md-3">
-        <div className="product-grid-item card" onClick={() => clickHandler(job._id)}>
-        <div className="product-grid-item-content">
-            <div className="product-name">{job.name}</div>
-            <div className="product-description">{job.description}</div>
-            <Rating value={job.rating} readOnly cancel={false}></Rating>
-            <img className='p-shadow-7' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + job._id + '.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here'></img>
-            </div>
-            <div className='tags-grid'>
-              <span>
+            <div className="p-grid">
+              <div className="item-data"><Rating value={job.rating} readOnly cancel={false}></Rating></div>
+              <div className="item-data"><b>{job.name}</b></div>
+              <div className="item-data">{job.description}</div>
+              <div className="item-tags">
                 {
                   job.tags.map((tag, index) => (
                       <Chip key={index} label={tag} />
                   ))
                 }
-              </span>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-  )
+      </div>
+    );
+  }
+
+  const renderGridItem = (job) => {
+    return (
+      <div style={{ padding: '.5em' }} className="p-col-12 p-md-1">
+        <Panel header={job.name} style={{ textAlign: 'center' }} >
+          <div className='centered' onClick={() => clickHandler(job._id)} >
+            <div className='p-shadow-3 image-frame centered' >
+              <img className='grid-image' src={'https://wwpm-files.s3-us-west-2.amazonaws.com/' + job._id + '/Thumbnail.png'} onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'} alt='pic here' ></img>
+            </div>
+          </div>
+          <Rating className='grid-rating' value={job.rating} readOnly cancel={false}></Rating>
+        </Panel>
+      </div>
+    )
   }
 
   const itemTemplate = (job, layout) => {
@@ -106,6 +88,11 @@ const JobList = ({jobs}) => {
     setRedirect(true)
   }
 
+  function thumbClickHandler (path) {
+    const newWindow = window.open('https://wwpm-files.s3-us-west-2.amazonaws.com/' + path + '/Thumbnail.png', '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
+
   if (redirect) {
     return <Redirect push to={redirectTo} />
   }
@@ -120,7 +107,7 @@ const JobList = ({jobs}) => {
                 layout={layout}
                 header={header}
                 itemTemplate={itemTemplate}
-                paginator rows={rows}
+                paginator rows={72}
                 emptyMessage='No Records Found'
                 //sortOrder={sortOrder}
                 //sortField={sortField}
