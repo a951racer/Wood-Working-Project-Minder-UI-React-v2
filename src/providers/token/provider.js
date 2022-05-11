@@ -5,7 +5,7 @@ import TokenContext from './context'
 const TokenProvider = ({children}) => {
   
   const [ token, setToken ] = useState(null)
-  const [hasLocalToken, setHasLocalToken] = useState(localStorage.getItem('WWPM_AUTH_TOKEN') !== 'null')
+  const [hasLocalToken, setHasLocalToken] = useState(localStorage.getItem('WWPM_AUTH_TOKEN') && localStorage.getItem('WWPM_AUTH_TOKEN') !== 'null')
 
   function getToken() {
     return localStorage.getItem('WWPM_AUTH_TOKEN')
