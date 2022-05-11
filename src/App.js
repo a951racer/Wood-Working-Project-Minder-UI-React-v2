@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom"
+//import { BrowserRouter } from "react-router-dom"
+import { HashRouter } from "react-router-dom";
 import { hot } from "react-hot-loader"
 
 import './Components/app/Assets/wwpm-theme/theme.css'
@@ -21,7 +22,7 @@ import LibraryProvider from "./providers/library/provider"
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <TokenProvider>
         <FetchProvider>
           <AuthProvider>
@@ -39,7 +40,7 @@ const App = () => {
           </AuthProvider>
         </FetchProvider>
       </TokenProvider>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
