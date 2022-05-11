@@ -8,11 +8,11 @@ import useToken from '../../providers/token/hook'
 import AuthContext from './context'
 
 const AuthProvider = ({children}) => {
-  const [userStatus, setUserStatus] = useState('loggedOut')
+  const { setLocalToken, hasLocalToken, deleteToken } = useToken()
+  const [userStatus, setUserStatus] = useState(hasLocalToken ? 'loggedIn' : 'loggedOut')
   const [userId, setUserId] = useState(null)
   const [profile, setProfile] = useState(null)
   const history = useHistory()
-  const { setLocalToken, hasLocalToken, deleteToken } = useToken()
   const { fetchViaApi } = useFetch()
 
   async function login(email, password) {
