@@ -116,9 +116,10 @@ const JobDetails = ({job}) => {
             <OverlayPanel ref={el => op = el} showCloseIcon={true}>
               <div className='overlay-frame centered'>
                 <img
-                  src={imagePath}
+                  className='overlay-image'
+                  src={imagePath} 
+                  alt={projectDetails.name}
                   onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
-                  alt={jobDetails.name}
                 />
               </div>
             </OverlayPanel>
@@ -182,9 +183,10 @@ const JobDetails = ({job}) => {
         <OverlayPanel ref={el => op = el} showCloseIcon={true}>
           <div className='overlay-frame centered'>
             <img
-              src={imagePath}
+              className='overlay-image'
+              src={imagePath} 
+              alt={projectDetails.name}
               onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
-              alt={jobDetails.name}
             />
           </div>
         </OverlayPanel>
