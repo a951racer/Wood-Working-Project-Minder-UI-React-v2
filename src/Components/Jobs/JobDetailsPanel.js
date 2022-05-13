@@ -114,11 +114,13 @@ const JobDetails = ({job}) => {
             </Card>
 
             <OverlayPanel ref={el => op = el} showCloseIcon={true}>
-              <img
-                src={imagePath}
-                onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
-                alt={jobDetails.name}
-              />
+              <div className='overlay-frame centered'>
+                <img
+                  src={imagePath}
+                  onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
+                  alt={jobDetails.name}
+                />
+              </div>
             </OverlayPanel>
           </>
       :
@@ -178,10 +180,13 @@ const JobDetails = ({job}) => {
         </Card>
 
         <OverlayPanel ref={el => op = el} showCloseIcon={true}>
-          <img
-            src={imagePath}
-            onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
-          />
+          <div className='overlay-frame centered'>
+            <img
+              src={imagePath}
+              onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
+              alt={jobDetails.name}
+            />
+          </div>
         </OverlayPanel>
       </>
       }

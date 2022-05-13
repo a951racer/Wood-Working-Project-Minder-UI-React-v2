@@ -240,3 +240,15 @@
   width: 100%;
   padding: .4em 0;
 }
+
+.overlay-frame {
+  width: 1000px;
+  height: 1000px;
+}
+
+.overlay-image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  padding: 5px;
+}

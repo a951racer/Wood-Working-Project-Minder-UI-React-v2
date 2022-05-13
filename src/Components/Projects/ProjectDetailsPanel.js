@@ -109,11 +109,14 @@ const ProjectDetails = ({project}) => {
             </Card>
 
             <OverlayPanel ref={el => op = el} showCloseIcon={true}>
-              <img
-                src={imagePath}
-                onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
-                alt={projectDetails.name}
-              />
+              <div className='overlay-frame'>
+                <img
+                  className='overlay-image'
+                  src={imagePath} 
+                  alt={projectDetails.name}
+                  onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
+                />
+             </div>
             </OverlayPanel>
           </>
       :
@@ -158,11 +161,14 @@ const ProjectDetails = ({project}) => {
         </Card>
 
         <OverlayPanel ref={el => op = el} showCloseIcon={true}>
-          <img
-            src={imagePath} 
-            alt={projectDetails.name}
-            onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
-          />
+          <div className='overlay-frame'>
+            <img
+              className='overlay-image'
+              src={imagePath} 
+              alt={projectDetails.name}
+              onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
+            />
+          </div>
         </OverlayPanel>
       </>
       }
