@@ -7,16 +7,14 @@ import Chip from '../app/Chip/Chip'
 import FileUploadDialog from '../app/dialogs/FileUploadDialog'
 
 import useLibrary from '../../providers/library/hook'
-import useFiles from '../../providers/files/hook'
 import './Library.css'
 
-const LibraryItem = ({item}) => {
+const LibraryItemDataPanel = ({item}) => {
   const [libraryItem, setLibraryItem] = useState(item)
   const [itemSnapshot, setItemSnapshot] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
-  const { fetchItemDetails, saveItem } = useLibrary()
-  const { uploadFile } = useFiles()
-
+  const { saveItem } = useLibrary()
+  
   let op = React.createRef()
 
   const startEditing = () => {
@@ -59,9 +57,13 @@ const LibraryItem = ({item}) => {
               <div className="project-details-container">
                 <div className="project-data">
                   <div className="data-item">
+                    <span className='project-name'> {libraryItem.title}</span>
                     <Rating value={item.rating} readOnly cancel={false} style={{marginBottom: '5px'}}></Rating>
-                    <span className='label'>Title:</span>
-                    <span> {libraryItem.title}</span>
+                  </div>
+
+                  <div className="data-item">
+                    <span className='label'>Description:</span>
+                    <span> {libraryItem.description}</span>
                   </div>
 
                   <div className="data-item">
@@ -72,15 +74,9 @@ const LibraryItem = ({item}) => {
                         ))
                       }
                   </div>
-
-                  <div className="data-item">
-                    <span className='label'>Description:</span>
-                    <span> {libraryItem.description}</span>
-                  </div>
                 </div>
               </div>
             </Card>
-
           </>
       :
         <>
@@ -92,10 +88,15 @@ const LibraryItem = ({item}) => {
           </div>
           <div className="project-details-container">
             <div className="project-data">
-              <Rating value={item.rating} cancel={false} style={{marginBottom: '5px'}}></Rating>
               <div className="data-item">
                 <span className='label'>Title:  </span>
                 <InputText value={libraryItem.title} onChange={(e) => updateProperty('title', e.target.value)} />
+              </div>
+              <Rating value={item.rating} cancel={false} style={{marginBottom: '5px'}}></Rating>
+
+              <div className="data-item">
+                <span className='label'>Description:</span>
+                <InputText value={libraryItem.description} onChange={(e) => updateProperty('description', e.target.value)} />
               </div>
 
               <div className="data-item">
@@ -103,13 +104,9 @@ const LibraryItem = ({item}) => {
                 <Chips value={libraryItem.tags} onChange={(e) => updateProperty('tags', e.target.value) } />
               </div>
 
-              <div className="data-item">
-                <span className='label'>Description:</span>
-                <InputText value={libraryItem.description} onChange={(e) => updateProperty('description', e.target.value)} />
-              </div>
 
               <div className="project-image">
-                <FileUploadDialog label='Library Item' mediaType='library' onUpload={(path) => onUpload(path)} />
+                <FileUploadDialog label='Library Item' mediaType='library' id={libraryItem.id} onUpload={(path) => onUpload(path)} />
               </div>
 
             </div>
@@ -121,4 +118,4 @@ const LibraryItem = ({item}) => {
   )
 }
 
-export default LibraryItem
+export default LibraryItemDataPanel
