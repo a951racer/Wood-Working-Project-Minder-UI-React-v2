@@ -19,7 +19,7 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpg|gif|ico)$/,
         use: [
           'file-loader',
         ],
@@ -66,6 +66,9 @@ module.exports = {
     new HtmlWebPackPlugin({
           template: "./src/index.html",
           filename: "./index.html"
+    }),
+    new HtmlWebpackPlugin({
+      favicon: "./src/favicon.ico"
     }),
     new Dotenv({
       systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
