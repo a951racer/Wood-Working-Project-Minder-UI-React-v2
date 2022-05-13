@@ -132,7 +132,7 @@ const JobDetails = ({job}) => {
           <div className="job-details-container">
             <div className="job-image">
               <img className="cover-image"
-                src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + job._id + '.png'}
+                src={imagePath}
                 onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
                 alt="pic here"
                 onClick={(e) => op.toggle(e)}
@@ -179,7 +179,7 @@ const JobDetails = ({job}) => {
 
         <OverlayPanel ref={el => op = el} showCloseIcon={true}>
           <img
-            src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + job._id + '.png'} alt={jobDetails.name}
+            src={imagePath}
             onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
           />
         </OverlayPanel>

@@ -110,7 +110,7 @@ const ProjectDetails = ({project}) => {
 
             <OverlayPanel ref={el => op = el} showCloseIcon={true}>
               <img
-                src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'}
+                src={imagePath}
                 onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
                 alt={projectDetails.name}
               />
@@ -127,7 +127,7 @@ const ProjectDetails = ({project}) => {
           <div className="project-details-container">
             <div className="project-image">
               <img className="cover-image"
-                src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'}
+                src={imagePath}
                 onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
                 alt="pic here"
                 onClick={(e) => op.toggle(e)}
@@ -159,7 +159,8 @@ const ProjectDetails = ({project}) => {
 
         <OverlayPanel ref={el => op = el} showCloseIcon={true}>
           <img
-            src={imagePath} alt={projectDetails.name}
+            src={imagePath} 
+            alt={projectDetails.name}
             onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
           />
         </OverlayPanel>
