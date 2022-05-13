@@ -109,11 +109,14 @@ const ProjectDetails = ({project}) => {
             </Card>
 
             <OverlayPanel ref={el => op = el} showCloseIcon={true}>
-              <img
-                src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'}
-                onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
-                alt={projectDetails.name}
-              />
+              <div className='overlay-frame'>
+                <img
+                  className='overlay-image'
+                  src={imagePath} 
+                  alt={projectDetails.name}
+                  onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
+                />
+             </div>
             </OverlayPanel>
           </>
       :
@@ -127,7 +130,7 @@ const ProjectDetails = ({project}) => {
           <div className="project-details-container">
             <div className="project-image">
               <img className="cover-image"
-                src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'}
+                src={imagePath}
                 onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
                 alt="pic here"
                 onClick={(e) => op.toggle(e)}
@@ -158,10 +161,14 @@ const ProjectDetails = ({project}) => {
         </Card>
 
         <OverlayPanel ref={el => op = el} showCloseIcon={true}>
-          <img
-            src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + project._id + '.png'} alt={projectDetails.name}
-            onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
-          />
+          <div className='overlay-frame'>
+            <img
+              className='overlay-image'
+              src={imagePath} 
+              alt={projectDetails.name}
+              onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
+            />
+          </div>
         </OverlayPanel>
       </>
       }

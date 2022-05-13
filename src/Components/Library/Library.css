@@ -239,3 +239,15 @@
   width: 100%;
   padding: .4em 0;
 }
+
+.library-item-frame {
+  height: 80vh;
+  width: 100%;
+}
+
+.library-item {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  padding: 5px;
+}
