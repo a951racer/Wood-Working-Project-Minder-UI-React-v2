@@ -118,7 +118,7 @@ const JobDetails = ({job}) => {
                 <img
                   className='overlay-image'
                   src={imagePath} 
-                  alt={projectDetails.name}
+                  alt={jobDetails.name}
                   onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
                 />
               </div>
@@ -185,7 +185,7 @@ const JobDetails = ({job}) => {
             <img
               className='overlay-image'
               src={imagePath} 
-              alt={projectDetails.name}
+              alt={jobDetails.name}
               onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
             />
           </div>
