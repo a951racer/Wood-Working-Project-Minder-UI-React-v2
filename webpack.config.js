@@ -65,11 +65,9 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebPackPlugin({
           template: "./src/index.html",
-          filename: "./index.html"
-    }),
-    new HtmlWebpackPlugin({
-      favicon: "./src/favicon.ico"
-    }),
+          filename: "./index.html",
+          favicon: "./src/favicon.ico"
+        }),
     new Dotenv({
       systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
     })
