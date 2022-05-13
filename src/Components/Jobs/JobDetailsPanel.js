@@ -115,7 +115,7 @@ const JobDetails = ({job}) => {
 
             <OverlayPanel ref={el => op = el} showCloseIcon={true}>
               <img
-                src={'https://wwpm-files.s3-us-west-2.amazonaws.com/images/' + job._id + '.png'}
+                src={imagePath}
                 onError={(e) => e.target.src='https://wwpm-files.s3.us-west-2.amazonaws.com/images/Default+Project+Pic.png'}
                 alt={jobDetails.name}
               />
