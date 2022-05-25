@@ -15,7 +15,6 @@ import LibraryItemPage from '../../Pages/Library/LibraryItemPage'
 export default function Routes () {
   const { userStatus } = useAuth()
 
-  console.log('user status: ', userStatus)
   return (
     <Switch>
       {userStatus === 'loggedOut' && <Route path="/auth" component={AuthPage} />}
