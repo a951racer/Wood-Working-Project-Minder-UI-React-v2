@@ -42,6 +42,11 @@ const ProjectDetails = ({project}) => {
     //this.growl.show({severity: 'success', summary: 'Saved', detail: 'ProjectDetails has been updated'})
   }
 
+  const onUpload = async (path) => {
+    await updateProperty('coverImage', path)
+    await saveProject(projectDetails)
+  }
+
   const footer = 
     <div style={{marginBottom: '.5em', width: '100px', margin: 'auto'}} ></div>
 
@@ -64,7 +69,7 @@ const ProjectDetails = ({project}) => {
                       onClick={(e) => op.toggle(e)}
                     />
                   </div>
-                  <FileUploadDialog label='Thumbnail' mediaType='thumbnail' projectId={projectDetails._id}/>
+                  <FileUploadDialog label='Thumbnail' mediaType='thumbnail' id={projectDetails._id} onUpload={(path) => onUpload(path)} />
                 </div>
                 <div className="project-data">
                   <div className="data-item">
