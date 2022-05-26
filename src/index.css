@@ -10,43 +10,6 @@ body {
   overflow: hidden;
 }
 
-.login-container {
-  display: flex;  
-  flex-flow: row wrap;
-  font-weight: bold;
-  text-align: center;
-  height: 100%;
-}
-
-.login-container > * {
-  padding: 10px;
-  flex: 1 100%;
-}
-
-.login-header {
-  height: 20vh;
-}
-
-.login-footer {
-  order: 4;
-}
-
-.login-main {
-  text-align: left;
-  flex: 3 0px;
-  order: 2;
-}
-
-.aside { flex: 1 0 0; }
-
-.aside-1 {
-  order: 1;
-}
-
-.aside-2 {
-  order: 3;
-}
-
 .login-form-wrapper {
   display: flex;
 }

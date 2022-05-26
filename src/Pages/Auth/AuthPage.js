@@ -26,9 +26,10 @@ const AuthPage = () => {
 
   return (
     <>
-      <div className="login-container">
-        <div className="login-header"></div>
-        <div className="login-main">
+      <div className="parent">
+        <div className="div1"></div>
+        <div className="div2"></div>
+        <div className="div3">
             <Card>
               <div className="login-form-wrapper">
                 <div className="login-form-logo">
@@ -56,9 +57,9 @@ const AuthPage = () => {
               </div>
             </Card>
         </div>
-        <div className="aside aside-1"></div>
-        <div className="aside aside-2"></div>
-        </div>
+        <div className="div3"></div>
+        <div className="div4"></div>
+      </div>
     </>
   )
 }
