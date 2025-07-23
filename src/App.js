@@ -1,7 +1,6 @@
 import React from "react";
 //import { BrowserRouter } from "react-router-dom"
 import { HashRouter } from "react-router-dom";
-import { hot } from "react-hot-loader"
 
 import './Components/app/Assets/wwpm-theme/theme.css'
 import 'primereact/resources/primereact.min.css'
