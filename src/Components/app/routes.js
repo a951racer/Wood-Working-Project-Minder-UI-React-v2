@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
 
 import useAuth from '../../providers/auth/hook'
 
@@ -16,11 +16,11 @@ export default function Routes () {
   const { userStatus } = useAuth()
 
   return (
-    <Switch>
+    <Routes>
       {userStatus === 'loggedOut' && <Route path="/auth" component={AuthPage} />}
-      {userStatus === 'loggedOut' && <Redirect to="/auth" exact />}
-      {userStatus === 'loggedIn' && <Redirect from="/" to="/projects" exact />}
-      {userStatus === 'loggedIn' && <Redirect from="/auth" to="/projects" exact />}
+      {userStatus === 'loggedOut' && <Navigate to="/auth" exact />}
+      {userStatus === 'loggedIn' && <Navigate from="/" to="/projects" exact />}
+      {userStatus === 'loggedIn' && <Navigate from="/auth" to="/projects" exact />}
       {<Route path="/projects" component={ProjectsPage} />}
       {<Route path="/project-details/:id" component={ProjectDetailsPage} />}
       {<Route path="/jobs" component={JobsPage} />}
@@ -28,6 +28,6 @@ export default function Routes () {
       {<Route path="/library" component={LibraryPage} />}
       {<Route path="/library-item/:id" component={LibraryItemPage} />}
       {<Route path="/profile" component={ProfilePage} />}
-    </Switch>
+    </Routes>
   )
 }

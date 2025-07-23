@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import useFetch from '../../providers/fetch/hook'
 import useToken from '../../providers/token/hook'
 //import {useBusy} from '@freightview/client-react/providers/busy'
@@ -12,7 +12,7 @@ const AuthProvider = ({children}) => {
   const [userStatus, setUserStatus] = useState(hasLocalToken ? 'loggedIn' : 'loggedOut')
   const [userId, setUserId] = useState(null)
   const [profile, setProfile] = useState(null)
-  const history = useHistory()
+  const history = useNavigate()
   const { fetchViaApi } = useFetch()
 
   async function login(email, password) {
