@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Redirect, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Navigate, useLocation } from 'react-router-dom'
 
 import useAuth from '../../../providers/auth/hook'
 import './MainNavigator.css';
@@ -52,7 +52,7 @@ const MainNavigator = () => {
   }
 
   if (redirect) {
-    return <Redirect push to={redirectTo} />;
+    return <Navigate push to={redirectTo} />;
   }
   return (
     <React.Fragment>
