@@ -12,7 +12,7 @@ import ProfilePage from '../../Pages/Profile/ProfilePage'
 import LibraryPage from '../../Pages/Library/LibraryPage'
 import LibraryItemPage from '../../Pages/Library/LibraryItemPage'
 
-export default function Routes () {
+export default function RouteEm () {
   const { userStatus } = useAuth()
 
   return (
