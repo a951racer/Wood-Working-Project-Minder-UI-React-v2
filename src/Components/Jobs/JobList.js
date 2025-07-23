@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Navigate } from 'react-router-dom'
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { Rating } from 'primereact/rating'
 import { Panel } from 'primereact/panel';
@@ -94,7 +94,7 @@ const JobList = ({jobs}) => {
   }
 
   if (redirect) {
-    return <Redirect push to={redirectTo} />
+    return <Navigate push to={redirectTo} />
   }
 
   return (
